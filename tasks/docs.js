@@ -139,8 +139,8 @@ module.exports = function (grunt) {
         //names.push('Exit-Codes');
 
         // get docs sidebars
-        sidebars[0] = getSidebarSection('### The Web API');
-        sidebars[1] = getSidebarSection('### Grunt Tasks');
+        sidebars[0] = getSidebarSection('### The Web API', 'Web API');
+        sidebars[1] = getSidebarSection('### Grunt Tasks', 'Grunt Tasks');
 
         names.forEach(function (name) {
           var src = base + name + '.md';
@@ -178,10 +178,13 @@ module.exports = function (grunt) {
       /**
        * Get sidebar list for section from Home.md
        */
-      function getSidebarSection(section, iconClass) {
+      function getSidebarSection(section, sectionName, iconClass) {
         var rMode = false,
           l,
           items = [];
+
+        // the title
+        items.push({name: sectionName, icon: iconClass});
 
         // read the Home.md of the wiki, extract the section links
         var lines = fs.readFileSync('tmp/wiki/Home.md').toString().split('\n');
@@ -190,29 +193,19 @@ module.exports = function (grunt) {
           // choose a section of the file
           if (line === section) { rMode = true; }
           // end of section
-          else if (line.substring(0,2) === '###') { rMode = false; }
+          else if (line.match(/\#\#\#/)) { rMode = false; }
 
           var itemsMatch = line.match(/\[\[(.*)\]\]/);
 
 
           if (itemsMatch && itemsMatch.length && rMode && line.length > 0) {
-
-            var item = itemsMatch[1],
-              url = item;
-
-            if (item[0] === " ") {
-              // TODO: clean this up...
-              if (iconClass) {
-                items.push({name: item.substring(1,item.length), icon: iconClass});
-              } else {
-                items.push({name: item.substring(1,item.length)});
-              }
-            } else {
-              items.push({name: item, url: url.replace(/ /g,'-').toLowerCase()});
-            }
+            var item = itemsMatch[1];
+            var url = item;
+            items.push({name: item, url: url.replace(/ /g,'-').toLowerCase()});
           }
         }
-        console.log('items:', items);
+
+        if (1 === items.length) { return []; }
         return items;
       }
 
