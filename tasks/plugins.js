@@ -16,6 +16,10 @@ module.exports = function (grunt) {
    * Custom task to generate the plugins page
    */
   grunt.registerTask('plugins', 'Compile Grunt Plugins Page', function () {
+
+    // nothing todo here atm
+    return;
+
     var pluginTpl = 'src/tmpl/plugins.jade';
 
     // Set default marked options

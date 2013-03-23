@@ -18,7 +18,7 @@ module.exports = function (grunt) {
   /**
    * Custom task to generate grunt documentation
    */
-  grunt.registerTask('docs', 'Compile Grunt Docs to HTML', function () {
+  grunt.registerTask('docs', 'Compile Project Docs to HTML', function () {
     var done = this.async();
 
     // clean the wiki directory, clone a fresh copy
@@ -47,7 +47,7 @@ module.exports = function (grunt) {
       marked.setOptions({
         gfm:true,
         anchors: true,
-        base: "/",
+        base: '/',
         pedantic:false,
         sanitize:true,
         // callback for code highlighter
@@ -56,10 +56,10 @@ module.exports = function (grunt) {
         }
       });
 
-      // grunt guides - wiki articles that are not part of the grunt api
-      generateGuides();
+      // project guides - wiki articles that are not part of the project api
+      // generateGuides();
 
-      // grunt api docs - wiki articles that start with 'grunt.*'
+      // project api docs - all wiki articles
       generateAPI();
 
       done(true);
@@ -126,25 +126,31 @@ module.exports = function (grunt) {
         // API Docs
         var sidebars = [],
           base = 'tmp/wiki/',
-          names = grunt.file.expand({cwd:base}, ['grunt.*.md', '!*utils*']);
+          names = grunt.file.expand({cwd:base}, ['*.md', '!*utils*']);
 
         names = names.map(function (name) {
           return name.substring(0, name.length - 3);
         });
 
         // the default api page is special
-        names.push('grunt');
+        //names.push('grunt');
         // TODO: temporary store for these
-        names.push('Inside-Tasks');
-        names.push('Exit-Codes');
+        //names.push('Inside-Tasks');
+        //names.push('Exit-Codes');
 
         // get docs sidebars
-        sidebars[0] = getSidebarSection('## API', 'icon-cog');
-        sidebars[1] = getSidebarSection('### Other');
+        sidebars[0] = getSidebarSection('### The Web API');
+        sidebars[1] = getSidebarSection('### Grunt Tasks');
 
         names.forEach(function (name) {
-          var src = base + name + '.md',
-            dest = 'build/api/' + name.toLowerCase() + '.html';
+          var src = base + name + '.md';
+          var dest = 'build/api/';
+
+          if ('home' === name.toLowerCase()) {
+            dest += 'index.html';
+          } else {
+            dest += name.toLowerCase() + '/index.html';
+          }
           grunt.file.copy(src, dest, {
             process:function (src) {
               try {
@@ -181,14 +187,17 @@ module.exports = function (grunt) {
         var lines = fs.readFileSync('tmp/wiki/Home.md').toString().split('\n');
         for(l in lines) {
           var line = lines[l];
-
           // choose a section of the file
           if (line === section) { rMode = true; }
           // end of section
-          else if (line.substring(0,2) === '##') { rMode = false; }
+          else if (line.substring(0,2) === '###') { rMode = false; }
 
-          if (rMode && line.length > 0) {
-            var item = line.replace(/#/g,'').replace(']]', '').replace('* [[', ''),
+          var itemsMatch = line.match(/\[\[(.*)\]\]/);
+
+
+          if (itemsMatch && itemsMatch.length && rMode && line.length > 0) {
+
+            var item = itemsMatch[1],
               url = item;
 
             if (item[0] === " ") {
@@ -203,6 +212,7 @@ module.exports = function (grunt) {
             }
           }
         }
+        console.log('items:', items);
         return items;
       }
 

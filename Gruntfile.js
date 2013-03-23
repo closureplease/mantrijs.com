@@ -8,9 +8,9 @@ module.exports = function(grunt) {
     // server port, used to serve the site and run tests
     server_port: 5678,
     // wiki url
-    wiki_url: 'https://github.com/gruntjs/grunt.wiki.git',
+    wiki_url: 'https://github.com/closureplease/mantri.wiki.git',
     // wiki file check, file that exists in the wiki for sure
-    wiki_file: 'grunt.md',
+    wiki_file: 'Home.md',
 
     // clean directories
     clean: {

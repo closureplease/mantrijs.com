@@ -25,7 +25,7 @@ exports.init = function(/*grunt*/) {
       if (h.indexOf('http') === 0) {
         return (a + q + h + q + b);
       } else {
-        return (a + q + h.toLowerCase() + q + b);
+        return (a + q + '/api' + h.toLowerCase() + q + b);
       }
     });
     return html;
