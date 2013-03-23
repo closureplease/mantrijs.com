@@ -1,3 +1,4 @@
+/*jshint camelcase:false */
 'use strict';
 
 module.exports = function(grunt) {
@@ -20,19 +21,19 @@ module.exports = function(grunt) {
     less: {
       development: {
         options: {
-          paths: ["src/less"]
+          paths: ['src/less']
         },
         files: {
-          "build/css/main.css": "src/less/main.less"
+          'build/css/main.css': 'src/less/main.less'
         }
       },
       production: {
         options: {
-          paths: ["src/less"],
+          paths: ['src/less'],
           yuicompress: true
         },
         files: {
-          "build/css/main.css": "src/less/main.less"
+          'build/css/main.css': 'src/less/main.less'
         }
       }
     },
@@ -66,7 +67,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          "build/404.html": "src/tmpl/404.jade"
+          'build/404.html': 'src/tmpl/404.jade'
         }
       }
     },
@@ -132,7 +133,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
-  
+
   grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'blog', 'plugins', 'concat']);
   grunt.registerTask('default', ['build', 'less:production']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
