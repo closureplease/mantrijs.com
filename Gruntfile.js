@@ -53,8 +53,8 @@ module.exports = function(grunt) {
         tasks: ['less:development']
       },
       tmpl: {
-        files: 'src/tmpl/**/*.js',
-        tasks: ['jade', 'default']
+        files: 'src/tmpl/**/*.jade',
+        tasks: ['jade']
       },
       js: {
         files: 'src/js/**',
@@ -100,6 +100,23 @@ module.exports = function(grunt) {
         files: {
           'build/404.html': 'src/tmpl/404.jade'
         }
+      },
+      index: {
+        options: {
+          data: {
+            page: 'index',
+            title: 'Mantri Javascript Dependency System'
+          }
+        },
+        files: {
+          'build/index.html': 'src/tmpl/index.jade'
+        }
+      }
+    },
+
+    zit: {
+      target: {
+        files: 'src/**'
       }
     },
 
@@ -149,4 +166,8 @@ module.exports = function(grunt) {
     'connect:livereload',
     'watch'
   ]);
+
+  grunt.registerMultiTask('zit', function(){
+    console.log('zit', this.data);
+  });
 };

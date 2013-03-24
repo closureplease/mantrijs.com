@@ -57,7 +57,7 @@ module.exports = function (grunt) {
       });
 
       // project guides - wiki articles that are not part of the project api
-      // generateGuides();
+      generateGuides();
 
       // project api docs - all wiki articles
       generateAPI();
@@ -80,19 +80,16 @@ module.exports = function (grunt) {
         // API Docs
         var sidebars = [],
           base = 'tmp/wiki/',
-          names = grunt.file.expand({cwd:base}, ['*', '!Blog-*', '!grunt*.md', '!*.js']);
+          names = grunt.file.expand({cwd:base}, ['Getting-Started.md']);
 
-          sidebars[0] = getSidebarSection('## Documentation', 'icon-document-alt-stroke');
-          sidebars[1] = getSidebarSection('### Advanced');
-          sidebars[2] = getSidebarSection('### Community');
-          sidebars[3] = getSidebarSection('### Migration guides');
+        //sidebars[0] = getSidebarSection('## Documentation');
 
         names.forEach(function (name) {
 
           var title = name.replace(/-/g,' ').replace('.md', ''),
             segment = name.replace(/ /g,'-').replace('.md', '').toLowerCase(),
             src = base + name,
-            dest = 'build/docs/' + name.replace('.md', '').toLowerCase() + '.html';
+            dest = 'build/docs/' + name.replace('.md', '').toLowerCase() + '/index.html';
 
           grunt.file.copy(src, dest, {
             process:function (src) {
@@ -104,7 +101,7 @@ module.exports = function (grunt) {
                     pageSegment: segment,
                     title:title,
                     content: docs.anchorFilter( marked( docs.wikiAnchors(src) ) ),
-                    sidebars: sidebars
+                    sidebars: []
                   };
                 return jade.compile(grunt.file.read(file), {filename:file})(templateData);
               } catch (e) {
