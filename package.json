@@ -9,15 +9,18 @@
     "postinstall": "node_modules/.bin/grunt"
   },
   "private": true,
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "grunt-open": "~0.2.0",
+    "grunt-contrib-connect": "~0.2.0",
+    "matchdep": "~0.1.1",
+    "grunt-contrib-livereload": "https://github.com/thanpolas/grunt-contrib-livereload/tarball/347a76bb1579c8344c437a9bb3a823acc383bdb0",
     "grunt": "~0.4.0",
-    "grunt-cli": "~0.1.x",
     "jade": "~0.28.x",
     "express": "3.0.5",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-concat": "~0.1.3",
     "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-contrib-watch": "~0.2.0",
     "grunt-contrib-copy": "~0.4.0",
     "grunt-contrib-less": "~0.5.0",
     "grunt-contrib-jade": "~0.4.0",
@@ -26,6 +29,7 @@
     "highlight.js": "~7.3.0",
     "request": "~2.12.0",
     "q": "~0.8.12",
-    "lodash": "~1.0.0-rc.3"
+    "lodash": "~1.0.0-rc.3",
+    "grunt-contrib-watch": "~0.3.1"
   }
 }

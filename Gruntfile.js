@@ -1,7 +1,16 @@
 /*jshint camelcase:false */
-'use strict';
+
+var path = require('path');
+
 
 module.exports = function(grunt) {
+
+  var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
+
+  var folderMount = function folderMount(connect, point) {
+    return connect.static(path.resolve(point));
+  };
+
 
   // Project configuration.
   grunt.initConfig({
@@ -54,6 +63,28 @@ module.exports = function(grunt) {
       other: {
         files: 'src/img/**',
         tasks: ['default']
+      },
+      livereload: {
+        files: 'build/**',
+        tasks: ['livereload']
+      }
+    },
+    connect: {
+      livereload: {
+        options: {
+          // limit the watch to just one file, no need for more,
+          // whole folders gets cleaned.
+          base: 'build/',
+          port: '<%= server_port %>',
+          middleware: function(connect) {
+            return [lrSnippet, folderMount(connect, 'build/')];
+          }
+        }
+      }
+    },
+    open: {
+      server: {
+        path: 'http://localhost:<%= connect.livereload.options.port %>'
       }
     },
 
@@ -85,25 +116,6 @@ module.exports = function(grunt) {
       }
     },
 
-    jshint: {
-      all: ['Gruntfile.js', 'tasks/*.js'],
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        unused: true,
-        boss: true,
-        eqnull: true,
-        node: true,
-        es5: true
-      }
-    },
-
     // copy site source files
     copy: {
       assets: {
@@ -122,21 +134,19 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load contrib tasks
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  // load all grunt tasks
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
 
   grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'blog', 'plugins', 'concat']);
-  grunt.registerTask('default', ['build', 'less:production']);
+  grunt.registerTask('default', ['build', 'less:production', 'server']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
-  grunt.registerTask('serve', ['server']);
+  grunt.registerTask('server', [
+    'livereload-start',
+    'connect:livereload',
+    'watch'
+  ]);
 };

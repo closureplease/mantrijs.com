@@ -19,7 +19,7 @@ module.exports = function (grunt) {
   /**
    * Custom task to generate the plugins page
    */
-  grunt.registerTask('server', 'Start the Grunt Site Server', function () {
+  grunt.registerTask('servermanual', 'Start the Grunt Site Server', function () {
     // keep the server task running
     this.async();
 
