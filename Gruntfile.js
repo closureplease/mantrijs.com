@@ -114,12 +114,6 @@ module.exports = function(grunt) {
       }
     },
 
-    zit: {
-      target: {
-        files: 'src/**'
-      }
-    },
-
     concat: {
       // if we add more js, modify this properly
       plugins: {
@@ -148,6 +142,17 @@ module.exports = function(grunt) {
     },
     nodeunit: {
       all: ['test/*_test.js']
+    },
+    githubPages: {
+      target: {
+        options: {
+          // The default commit message for the gh-pages branch
+          commitMessage: 'push push'
+        },
+        // The folder where your gh-pages repo is
+        src: 'build',
+        dest: 'build_git'
+      }
     }
   });
 
@@ -170,13 +175,10 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['build', 'less:production', 'server']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
+  grunt.registerTask('deploy', ['githubPages:target']);
   grunt.registerTask('server', [
     'livereload-start',
     'connect:livereload',
     'watch'
   ]);
-
-  grunt.registerMultiTask('zit', function(){
-    console.log('zit', this.data);
-  });
 };
