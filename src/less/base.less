@@ -421,22 +421,23 @@ i {
   position: absolute;
 }
 
-.grunt-footer {
+.master-footer {
   color: #FFF;
   font-weight: 200;
-  height: 4em;
   line-height: 4em;
   letter-spacing: 1px;
   text-shadow: @text-shadow;
+  background: @brand-color-font-dark;
   .inner {
-    background: #453015;
+    background: @brand-color-font-dark;
     .container {
-      background: #453015;
+      background: @brand-color-font-dark;
       .pull-left {
         margin-left: 10px;
+        color: #408500;
         a {
           text-decoration: underline;
-          color: white;
+          color: #408500;
           &:hover {
             text-decoration: underline;
             background: none;
@@ -446,7 +447,7 @@ i {
       }
       a:hover {
         text-decoration: none;
-        background: #3e2b13;
+        background: @brand-color-hover;
       }
       .inner {
         margin: 0px auto;
@@ -473,8 +474,8 @@ i {
           }
           &.social a,
           &.social a:hover {
-            font-size: 1.3em;
-            padding: .95em .6em;
+            //font-size: 1.3em;
+            //padding: .95em .6em;
             vertical-align: middle;
           }
         }
