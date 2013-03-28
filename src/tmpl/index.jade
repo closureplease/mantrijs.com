@@ -19,15 +19,16 @@ block content
       .span9.page.hero-unit
         .why.left
           h2 Why a new system?
-          p A dependency system helps you develop, manage and maintain web applications. A module loader takes care of asynchronously loading components that your app requires. Using a module loader as a dependency system is an overkill. It is time to decouple module loading from dependency management.
+          p Medium to Large web applications require a robust system to manage their dependencies. While module loaders excel at interoperating with external libraries, they can <a href="http://thanpol.as/javascript/why-i-dont-like-amd-and-what-i-will-do-about-it/" alt="Why I Don't Like AMD And What I Will Do About It">become difficult</a> to <a href="http://jamisondance.com/2012/7/27/mocking-dependencies-for-unit-testing-with-require-js/" alt="Mocking Dependencies For Unit Testing With require.js">work with</a> when used as dependency systems. A new system should allow the code to be easily tested, debuged and get out of the way after the build process. Meet Mantri!
 
         .why.right
           h2 Why use Mantri?
-          p Harder, Better, Faster, Stronger. Mantri leaves no footprint on your deployed file, which means faster delivery of your app. Provides dead easy testing by exposing all your methods and properties on development, hides them on production. Simple and lean <code>provide</code> and <code>require</code> statements will make your day! And finally a complete workflow to build your codebase.
+          p Harder, Better, Faster, Stronger. Mantri leaves no footprint on your deployed file, which means faster delivery of your app. Provides dead easy testing by exposing all your methods and properties on development, hides them on production. Simple and lean <code>provide</code> and <code>require</code> statements, and a complete workflow to build your codebase.
 
         .technology
           h2 How Mantri works
-          P Mantri is synchronous, leaves no footprint in your production code and can work with any other module loader. All your files are loaded synchronously before <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/DOMContentLoaded_(event)" title="MDN DOMContentLoaded event">DOMContentLoaded event</a> fires, just like your code would evaluate when packaged and minified. Mantri does not exist in your
+          P Mantri is synchronous, leaves no footprint in your production file and can work with any other module loader. When developing, all your files are loaded synchronously before <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/DOMContentLoaded_(event)" title="MDN DOMContentLoaded event">DOMContentLoaded event</a> fires, just like your code would evaluate when packaged and minified. Mantri wraps around the powerfull <a href="https://developers.google.com/closure/" alt="Google Closure Tools">Google Closure Tools</a>, the same tools used by most of Google's web assets. Combined with modern day build flows Mantri offers a radically new way to manage your dependencies.
+
 
         .how-get-started
           h2 How do I get started?
@@ -38,18 +39,10 @@ block content
           .latest-version
             h3 Latest Version
             ul
-              li Stable: v0.0.6
+              li Stable: N/A
               li Development: v0.1.0rc2
 
 
           .getting-started
             h3 Getting Started
             block gettingStarted
-
-          .social
-            a.github(href='https://github.com/gruntjs/', alt='Grunt on GitHub')
-              span.icon-github
-            a.twitter(href='https://twitter.com/gruntjs/', alt='Grunt on Twitter')
-              span.icon-twitter
-            a.feed(href='/rss', alt='Grunt blog RSS feed')
-              span.icon-feed
