@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>goog provide and require - Grunt: The JavaScript Task Runner</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Spicy+Rice|Press+Start+2P"><link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon"><link href="/rss" rel="alternate" title="Grunt Blog Feed" type="application/atom+xml"><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-api page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container goog-provide-and-require"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1>goog provide and require</h1><p>&lt;sup&gt;<a href="/api/home">← Back to Home</a>&lt;/sup&gt;</p>
+<p>Each javascript file provides a unique namespace and can require any number of other namespaces:</p>
+<pre><code class="lang-js">goog.provide(<span class="string">'app'</span>);
+
+goog.require(<span class="string">'app.router'</span>);
+goog.require(<span class="string">'app.controller'</span>);
+goog.require(<span class="string">'app.view'</span>);</code></pre>
+<p>That is all. From there on you code as you may.</p>
+<p>All the <code>goog.require</code> and <code>goog.provide</code> declarations will be removed when your application gets built.</p>
+<blockquote>
+<p>It is advised to put all declarations at the top of your file.</p>
+</blockquote>
+<h2><a class="anchor" href="/api#the-functions" name="the-functions">The Functions</a></h2>
+<p>&lt;sup&gt;Heavily quoting the <a href="https://developers.google.com/closure/library/docs/tutorial" title="Google Closure Library Tutorial">Google Closure&#39;s Library Tutorial</a>&lt;/sup&gt;</p>
+<h3><a class="anchor" href="/api#goog.provide" name="goog.provide"><code>goog.provide()</code></a></h3>
+<p>Type: <code>string</code> Default: None</p>
+<p>The <code>goog.provide()</code> function ensures the existence of the JavaScript object structure indicated by its argument. It checks to see whether each object property in the path expression exists, and if it doesn&#39;t exist it initializes it.</p>
+<p>The function call <code>goog.provide(&#39;app.view.about&#39;)</code> is equivalent to:</p>
+<pre><code class="lang-js">app = app || {};
+app.view = app.view || {};
+app.view.about = app.view.about || {};</code></pre>
+<p>Because <code>goog.provide()</code> only initializes properties if they don&#39;t already exist, it never overwrites properties.</p>
+<blockquote>
+<p>With <code>goog.provide()</code> you declare namespaces, not directory structure. Just provide a unique namespace and then require it. It&#39;s as simple as that.</p>
+</blockquote>
+<h3><a class="anchor" href="/api#goog.require" name="goog.require"><code>goog.require()</code></a></h3>
+<p>Type: <code>string</code> Default: None</p>
+<p>Implements a system for the dynamic resolution of dependencies that works in parallel with the BUILD system.</p>
+<p>For a better understanding of the inner workings check out <a href="https://developers.google.com/closure/library/docs/tutorial" title="Google Closure Library Tutorial">Google Closure&#39;s Library Tutorial</a> and scroll to <em>&quot;Creating a Namespace with goog.provide()&quot;</em>.</p>
+<p>&lt;sup&gt;<a href="/api/#wrapper">↑ Back to Top</a>&lt;/sup&gt;</p>
+<p>&lt;sup&gt;<a href="/api/home">← Back to Home</a>&lt;/sup&gt;</p>
+</div></div><div class="span3"><div class="well sidebar-nav"><ul class="nav nav-list"><li class="nav-header"><span>Web API</span></li><li><a href="/api/the-script-element">The Script Element</a></li><li><a href="/api/goog-provide-and-require" class="active">goog provide and require</a></li><li><a href="/api/the-configuration-file">The Configuration File</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Grunt Tasks</span></li><li><a href="/api/mantri-as-a-grunt-plugin">Mantri As a Grunt Plugin</a></li><li><a href="/api/grunt-task-mantrideps">Grunt Task mantriDeps</a></li><li><a href="/api/grunt-task-mantribuild">Grunt Task mantriBuild</a></li></ul></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><a href="https://github.com/closureplease/mantri" alt="Mantri on GitHub"><span>Mantri on GitHub &nbsp;</span><span class="icon-github"></span></a></li></ul><ul class="pull-left"><li>This site was built using <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">the sources</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li></ul></div></div></footer><script>var _gaq=[['_setAccount','UA-xxxxx-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script></body></html>

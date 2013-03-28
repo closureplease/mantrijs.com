@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>The Configuration File - Grunt: The JavaScript Task Runner</title><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Spicy+Rice|Press+Start+2P"><link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon"><link href="/rss" rel="alternate" title="Grunt Blog Feed" type="application/atom+xml"><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-api page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container the-configuration-file"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1>The Configuration File</h1><p>&lt;sup&gt;<a href="/api/home">← Back to Home</a>&lt;/sup&gt;</p>
+<p>The <code>mantriConf.json</code> file is where you declare your vendor depedencies, build directives and more.</p>
+<h2><a class="anchor" href="/api#show-me" name="show-me">Show Me!</a></h2>
+<p>The full configuration with default values.</p>
+<pre><code class="lang-js">{
+  baseUrl: <span class="string">'folder/'</span>,
+  libs: {
+    library: <span class="string">'path/file'</span>
+  },
+  build: {
+    input: <span class="string">'boostrap/file.js'</span>,
+    exclude: [<span class="string">'library'</span>]
+  }
+}</code></pre>
+<h2><a class="anchor" href="/api#not-for-production" name="not-for-production">Not For Production!</a></h2>
+<p>The <code>mantriConf.json</code> file should not exist in your production environment. So make sure you remove it at deployment. To define another location for the file use the <code>data-config</code> attribute in the <code>&lt;script&gt;</code> element:</p>
+<pre><code class="lang-html">&lt;script data-config=<span class="string">"js/config/mantriConf.json"</span> src=<span class="string">"js/libs/mantri.web.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></code></pre>
+<h2><a class="anchor" href="/api#options" name="options">Options</a></h2>
+<h3><a class="anchor" href="/api#baseurl" name="baseurl">baseUrl</a></h3>
+<p>Type: <code>string</code> Default: current directory</p>
+<p>The base url path relative to your document root.</p>
+<h4><a class="anchor" href="/api#absolute-paths" name="absolute-paths">Absolute Paths</a></h4>
+<p>For cases where you need absolute paths feel free to use <code>/</code></p>
+<p>Using <code>./</code> means literally the current path. Helps if your application lives under a folder.</p>
+<h3><a class="anchor" href="/api#libs" name="libs">libs</a></h3>
+<p>Type: <code>Object</code> Default: None</p>
+<p>Define all your third-party dependencies in this object. the key of the object is the lib&#39;s id and the value is the path to the file.</p>
+<blockquote>
+<p>The key used to id the lib does not carry any significance beyond the config file itself.</p>
+</blockquote>
+<h3><a class="anchor" href="/api#build.input" name="build.input">build.input</a></h3>
+<p>Type: <code>string</code> Default: <strong>Required</strong></p>
+<p>Define the path and filename to your main file that bootstraps your application. The path should be relative to where the <code>Gruntfile.js</code> is. The filename should include the <code>.js</code> extension.</p>
+<h3><a class="anchor" href="/api#build.exclude" name="build.exclude">build.exclude</a></h3>
+<p>Type: <code>Array</code> of strings Default: None</p>
+<p>Define the libraries that you want to exclude from bundling. This is useful when you want to load popular libraries from public CDN hosts.</p>
+<p>Use the <strong>key</strong> part of the <code>libs</code> hash to refer to libs you want excluded.</p>
+<p>&lt;sup&gt;<a href="/api/#wrapper">↑ Back to Top</a>&lt;/sup&gt;</p>
+<p>&lt;sup&gt;<a href="/api/home">← Back to Home</a>&lt;/sup&gt;</p>
+</div></div><div class="span3"><div class="well sidebar-nav"><ul class="nav nav-list"><li class="nav-header"><span>Web API</span></li><li><a href="/api/the-script-element">The Script Element</a></li><li><a href="/api/goog-provide-and-require">goog provide and require</a></li><li><a href="/api/the-configuration-file" class="active">The Configuration File</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Grunt Tasks</span></li><li><a href="/api/mantri-as-a-grunt-plugin">Mantri As a Grunt Plugin</a></li><li><a href="/api/grunt-task-mantrideps">Grunt Task mantriDeps</a></li><li><a href="/api/grunt-task-mantribuild">Grunt Task mantriBuild</a></li></ul></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><a href="https://github.com/closureplease/mantri" alt="Mantri on GitHub"><span>Mantri on GitHub &nbsp;</span><span class="icon-github"></span></a></li></ul><ul class="pull-left"><li>This site was built using <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">the sources</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li></ul></div></div></footer><script>var _gaq=[['_setAccount','UA-xxxxx-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script></body></html>
