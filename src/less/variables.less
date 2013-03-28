@@ -1,16 +1,28 @@
 @import "bootstrap/variables";
 
-@gruntOrange:                       #e48632;
-@brown:                             #453015;
-@brownLighter:                      #6f5a40;
-@textColor:                         @brownLighter;
+//
+// Brand Colors
+//
+@brand-color-strong: #339900;
+@brand-color-light: #33CC00;
+@brand-color-font: #337700;
+@brand-color-font-dark: #335500;
+
+
+
+@btn-gradient-from: rgb(41, 203, 0);
+@btn-gradient-to:   rgb(51, 255, 0);
+
+@textColor:                         @brand-color-font;
 @btnBorder:                         #ccc;
 @navbarHeight:                      56px;
 
-@navbarInverseBackground:           @gruntOrange;
-@navbarLinkBackgroundHover:         #dc822d;
+@navbarInverseBackground:           @brand-color-strong;
+@navbarLinkBackgroundHover:         @brand-color-light;
 @navbarInverseLinkColor:            @white;
 @navbarInverseLinkColorHover:       @white;
-@navbarInverseLinkBackgroundHover:  #d67f2d;
+@navbarInverseLinkBackgroundHover:  @brand-color-light;
 
 @heroUnitBackground:                @white;
+
+

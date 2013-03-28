@@ -16,7 +16,7 @@ h3 {
 
 a {
   &:hover {
-    color: @gruntOrange;
+    color: @brand-color-strong;
     text-decoration: underline;
   }
 }
@@ -68,26 +68,28 @@ i {
 
 .brand {
   position: absolute;
-  left: 15px;
+  left: 30px;
   .logo {
-    background: transparent url(../img/grunt-logo.png) no-repeat;
-    background-image: -webkit-linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
-    background-image: -moz-linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
-    background-image: linear-gradient(transparent, transparent), url(../img/grunt-logo.svg);
-    width: 190px;
-    height: 224px;
+    background: transparent url(../img/mantri-logo-whole-182.png) no-repeat;
+    width: 182px;
+    height: 182px;
     display: block;
-  }
+
+    line-height: 400px;
+    font-size: 2.2em;
+    color: #000;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;  }
 }
 
-.page-secondary .brand .logo {
-  background-size: 100% auto;
-  -ms-behavior: url('/backgroundsize.htc');
-}
+// .page-secondary .brand .logo {
+//   background-size: 100% auto;
+//   -ms-behavior: url('/backgroundsize.htc');
+// }
 
 .page-secondary {
   .brand {
-    left: 27px;
+    left: 55px;
   }
   .row-fluid {
     margin-left: 1px;
@@ -141,14 +143,14 @@ i {
 }
 
 .sidebar-nav .nav-list:first-child li:first-child {
-  background: #e48632;
+  background: @brand-color-strong;
 }
 
 .sidebar-nav {
-  margin-top: 210px;
+  margin-top: 220px;
   padding: 0;
   .nav-header {
-    background: #e48632;
+    background: @brand-color-strong;
     color: white;
     margin: 0;
     text-shadow: none;
@@ -191,7 +193,7 @@ i {
       margin-top: 20px;
     }
   // &:first-child li:first-child {
-  //   background: #e48632;
+  //   background: @brand-color-strong;
   //   padding-left: 13px;
   // }
     a {
@@ -255,16 +257,16 @@ i {
       color: #6f5a40;
       font-weight: 500;
       border: 1px solid rgb(177, 166, 147);
-      background-image: linear-gradient(bottom, rgb(204, 190, 163) 0%, rgb(231, 214, 183) 100%);
-      background-image: -o-linear-gradient(bottom, rgb(204, 190, 163) 0%, rgb(231, 214, 183) 100%);
-      background-image: -moz-linear-gradient(bottom, rgb(204, 190, 163) 0%, rgb(231, 214, 183) 100%);
-      background-image: -webkit-linear-gradient(bottom, rgb(204, 190, 163) 0%, rgb(231, 214, 183) 100%);
-      background-image: -ms-linear-gradient(bottom, rgb(204, 190, 163) 0%, rgb(231, 214, 183) 100%);
-      background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(204, 190, 163)), color-stop(1, rgb(231, 214, 183)));
+      background-image: linear-gradient(bottom, @btn-gradient-from 0%, @btn-gradient-to 100%);
+      background-image: -o-linear-gradient(bottom, @btn-gradient-from 0%, @btn-gradient-to 100%);
+      background-image: -moz-linear-gradient(bottom, @btn-gradient-from 0%, @btn-gradient-to 100%);
+      background-image: -webkit-linear-gradient(bottom, @btn-gradient-from 0%, @btn-gradient-to 100%);
+      background-image: -ms-linear-gradient(bottom, @btn-gradient-from 0%, @btn-gradient-to 100%);
+      background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @btn-gradient-from), color-stop(1, @btn-gradient-to));
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
       &:hover {
         background-position: 0 0;
-        background-color: #ccbea3;
+        background-color: #ff00ff; // #ccbea3;
       }
       &:active {
         box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
@@ -383,7 +385,7 @@ i {
 
 .plugin.contrib:before {
   position: absolute;
-  background-color: #e48632;
+  background-color: @brand-color-strong;
   width: 32px;
   height: 39px;
   left: 8px;
@@ -411,7 +413,7 @@ i {
   content: "";
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-top: 10px solid #e48632;
+  border-top: 10px solid @brand-color-strong;
   width: 0px;
   height: 0px;
   left: 8px;
@@ -438,7 +440,7 @@ i {
           &:hover {
             text-decoration: underline;
             background: none;
-            color: @gruntOrange;
+            color: @brand-color-strong;
           }
         }
       }
@@ -583,7 +585,7 @@ pre .literal {
   .nav {
     float: right;
     margin-right: 0;
-    background: @gruntOrange;
+    background: @brand-color-strong;
   }
   .navbar-search {
     display: none;

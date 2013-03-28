@@ -157,7 +157,16 @@ module.exports = function(grunt) {
   // Load local tasks
   grunt.loadTasks('tasks'); // getWiki, docs tasks
 
-  grunt.registerTask('build', ['clean', 'copy', 'jade', 'docs', 'blog', 'plugins', 'concat']);
+  grunt.registerTask('build', [
+    'clean',
+    'copy',
+    'jade',
+    'less:development',
+    'docs',
+    'blog',
+    'plugins',
+    'concat'
+  ]);
   grunt.registerTask('default', ['build', 'less:production', 'server']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
