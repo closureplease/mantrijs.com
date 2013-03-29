@@ -1,0 +1,119 @@
+
+code, pre {
+  font-size: 13px;
+  font-family: Monaco, Consolas, "Lucida Console", monospace;
+}
+
+pre {
+  padding: 0;
+  code {
+    font-size: 14px;
+    padding: 1em;
+    color: #F8F8F8;
+    background: #181818;
+  }
+}
+
+pre .comment {
+  color: #7E7680;
+}
+
+pre .keyword {
+  color: #e9df8f;
+}
+
+pre .string {
+  color: #8F9D6A;
+}
+
+pre .regexp {
+  color: #E9C062;
+}
+
+pre .number {
+  color: #CF6A4C;
+}
+
+pre .title {
+  color: #CDA869;
+}
+
+pre .params {
+  color: #7587A6;
+}
+
+pre .literal {
+  color: #CDA869;
+}
+
+pre.terminal {
+  position: relative;
+  color: #ddd;
+  background: #000;
+  padding: 5px;
+  margin-top: 2.6em;
+  border: 1px solid #aaa;
+  border: 1px solid hsla(0, 0%, 43%, .3);
+  font-family: Menlo, Menlo-Regular, Inconsolata, Monaco, monospace;
+  font-size: 13px;
+  line-height: 1.2em;
+}
+
+pre.terminal:after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: -1.6em;
+  bottom: 0px;
+  left: 0;
+  right: 100%;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0px 0px 25px 0px #aaa;
+}
+
+pre.terminal:before {
+  display: block;
+  position: absolute;
+  content: "grunt";
+  text-align: center;
+  color: #000;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: #ccc;
+  background-image: -webkit-linear-gradient(top, #ddd, #aaa);
+  background-image: -moz-linear-gradient(top, #ddd, #aaa);
+  line-height: 1.8em;
+  height: 1.8em;
+  top: -1.8em;
+  left: -1px;
+  right: -1px;
+  font-family: Lucida Grande, sans-serif;
+  font-size: 12px;
+  color: #3A3A53;
+  text-shadow: 0 1px 0 hsla(0, 0%, 100%, .4);
+  border: 1px solid hsla(0, 0%, 43%, .3);
+}
+
+pre.terminal .green {
+  color: #0c0;
+}
+
+.command-prompt {
+  color: #FFF;
+}
+
+.command-prompt:before {
+  content: "$ ";
+  color: #ddd;
+}
+
+.active-prompt {
+  .blink(1s, infinite)
+}
+
+.active-prompt:after {
+  content: "_";
+  color: #FFF;
+}

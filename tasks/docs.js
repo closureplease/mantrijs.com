@@ -136,8 +136,9 @@ module.exports = function (grunt) {
         //names.push('Exit-Codes');
 
         // get docs sidebars
-        sidebars[0] = getSidebarSection('### The Web API', 'Web API');
-        sidebars[1] = getSidebarSection('### Grunt Tasks', 'Grunt Tasks');
+        sidebars[0] = getSidebarSection('## The Web API', 'Web API');
+        sidebars[1] = getSidebarSection('## The Command Line Interface', 'The CLI');
+        sidebars[2] = getSidebarSection('## Grunt Tasks', 'Grunt Tasks');
 
         names.forEach(function (name) {
           var src = base + name + '.md';
@@ -190,7 +191,7 @@ module.exports = function (grunt) {
           // choose a section of the file
           if (line === section) { rMode = true; }
           // end of section
-          else if (line.match(/\#\#\#/)) { rMode = false; }
+          else if (line.match(/\#\#/)) { rMode = false; }
 
           var itemsMatch = line.match(/\[\[(.*)\]\]/);
 
