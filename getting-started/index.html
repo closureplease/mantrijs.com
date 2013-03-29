@@ -13,13 +13,20 @@
 <h2><a class="anchor" href="/api#creating-the-first-project" name="creating-the-first-project">Creating the First Project</a></h2>
 <p>From your project&#39;s root folder, install the Mantri library.</p>
 <pre><code class="lang-shell">npm install mantri --save-dev</code></pre>
-<p>During development, your web application will require two files to operate, the Mantri runtime and configuration files. The Mantri runtime is the only javascript file you need to include in your html document. To get those two files run the <code>init</code> cli command.</p>
+<p>During development, your web application needs two files to operate, the web runtime and Mantri configuration. The Mantri runtime is the only javascript file you need to include in your html document. To get those two files run the <code>init</code> cli command.</p>
 <pre><code class="lang-shell">mantri init</code></pre>
 <p>This will create the files <code>mantri.web.js</code> and <code>mantriConf.json</code> in your current directory. Use the <code>-h</code> flag to get help for the Mantri CLI in general or a spefic command <code>mantri init -h</code>.</p>
 <h2><a class="anchor" href="/api#your-web-application" name="your-web-application">Your Web Application</a></h2>
 <h3><a class="anchor" href="/api#dependency-declarations" name="dependency-declarations">Dependency Declarations</a></h3>
 <p>Mantri expects that you make <code>goog.provide()</code> and optionally <code>goog.require()</code> declarations at the top of all your files.</p>
-<p>You can declare all your third-party dependencies in the <a href="/api/the-configuration-file" title="The Mantri configuration file"><code>mantriConf.json</code></a> configuration file.</p>
+<pre><code class="lang-js"><span class="comment">/**
+ * @fileoverview The user model.
+ */</span>
+goog.provide(<span class="string">'myApp.model.user'</span>);
+
+goog.require(<span class="string">'myApp.Events'</span>);
+goog.require(<span class="string">'myApp.helpers'</span>);</code></pre>
+<p>You can declare all your third-party dependencies in the <a href="/api/the-configuration-file" title="The Mantri configuration file"><code>mantriConf.json</code></a> configuration file. Once defined, Mantri will load them before your application and they will be available in the global context, e.g. access jQuery like you would using the global <code>$</code> or <code>jQuery</code> variables.</p>
 <h3><a class="anchor" href="/api#your-html-document" name="your-html-document">Your HTML Document</a></h3>
 <p>The <code>html</code> document should look something like this:</p>
 <pre><code class="lang-html">{{#<span class="keyword">if</span> development}}
@@ -28,8 +35,8 @@
   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"//xxx.cloudfront.net/42/buildApp.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 {{/if}}</span></code></pre>
 <h3><a class="anchor" href="/api#resolving-dependencies" name="resolving-dependencies">Resolving Dependencies</a></h3>
-<p>As you&#39;ve noticed, you are <em>providing</em> and <em>requiring</em> namespaces, not filenames. This enables some interesting feats like being free to move files around without the fear of updating any of your files. Mantri will do the dirty job for you by scanning and mapping the namespaces to actual filenames, this is called the <code>deps</code> command.</p>
-<pre><code class="lang-shell">mantri deps --src=app/ --dest=app/deps.js</code></pre>
+<p>As you&#39;ve noticed, you are <em>providing</em> and <em>requiring</em> namespaces, not filenames. This enables some interesting feats like being able to move files around without the need to update any of your files. Mantri will do the dirty job for you by scanning and mapping the namespaces to actual filenames, this is called the <code>deps</code> command.</p>
+<pre><code class="lang-shell">mantri deps --src=js/ --dest=js/deps.js</code></pre>
 <blockquote>
 <p>If you create or edit a dependency declaration you will need to run the <code>deps</code> command.</p>
 </blockquote>
@@ -50,7 +57,7 @@
     <span class="string">"exclude"</span>: [<span class="string">"jquery"</span>]
   }
 }</code></pre>
-<p>The properties talk for themselves, nothing to say here...</p>
+<p>The <code>build.input</code> option must point to the file that bootstraps your application. <a href="/api/the-build-operation" title="The Build Operation">Read more about the build process</a>.</p>
 <h3><a class="anchor" href="/api#production" name="production">Production</a></h3>
 <p>Building your application is one command line away:</p>
 <pre><code class="lang-shell">mantri build</code></pre>
@@ -65,6 +72,7 @@
 <li>Concatenates the vendor libs and your app.</li>
 <li>Optionally wraps your code in anything you like (<a href="https://github.com/amdjs/amdjs-api/wiki/AMD" title="The Asynchronous Module Definition (AMD) API">AMD</a>, <a href="http://www.commonjs.org/" title="CommonJS Module System">CommonJS</a>, anon function, you name it).</li>
 </ul>
+<p><a href="/api/the-build-operation" title="The Build Operation">Read more about the build process</a>.</p>
 <h2><a class="anchor" href="/api#examples" name="examples">Examples</a></h2>
 <p>Clone the classical <a href="https://github.com/closureplease/todoAppMantri" title="todoMVC using Mantri">ToDo MVC Application</a> using the <strong>Mantri</strong> Dependecy System:</p>
 <pre><code class="lang-shell">git clone git@github.com:closureplease/todoAppMantri.git</code></pre>
