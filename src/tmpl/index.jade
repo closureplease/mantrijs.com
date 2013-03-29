@@ -18,17 +18,19 @@ block content
           span.logo
     .row-fluid
       .span9.page.hero-unit
-        .why.left
-          h2 Why a new system?
-          p Medium to Large web applications require a robust system to manage their dependencies. While module loaders excel at interoperating with external libraries, they can <a href="http://thanpol.as/javascript/why-i-dont-like-amd-and-what-i-will-do-about-it/" alt="Why I Don't Like AMD And What I Will Do About It">become difficult</a> to <a href="http://jamisondance.com/2012/7/27/mocking-dependencies-for-unit-testing-with-require-js/" alt="Mocking Dependencies For Unit Testing With require.js">work with</a> when used as dependency systems. A new system should allow the code to be easily tested, debuged and get out of the way after the build process. Meet Mantri!
+        .row
+          .span12
+            .why.left
+              h2 Why a new system?
+              p Medium to Large web applications require a robust system to manage their dependencies. While module loaders excel at interoperating with external libraries, they can <a href="http://thanpol.as/javascript/why-i-dont-like-amd-and-what-i-will-do-about-it/" alt="Why I Don't Like AMD And What I Will Do About It">become difficult</a> to <a href="http://jamisondance.com/2012/7/27/mocking-dependencies-for-unit-testing-with-require-js/" alt="Mocking Dependencies For Unit Testing With require.js">work with</a> when used as dependency systems. A new system should allow the code to be easily tested, debuged and get out of the way after the build process. Meet Mantri!
 
-        .why.right
-          h2 Why use Mantri?
-          p Harder, Better, Faster, Stronger. Mantri leaves no footprint on your deployed file, which means faster delivery of your app. Provides dead easy testing by exposing all your methods and properties on development, hides them on production. Simple and lean <code>provide</code> and <code>require</code> statements, and a complete workflow to build your codebase.
-
-        .technology
-          h2 How Mantri works
-          P Mantri is synchronous, leaves no footprint in your production file and can work with any other module loader. When developing, all your files are loaded synchronously before <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/DOMContentLoaded_(event)" title="MDN DOMContentLoaded event">DOMContentLoaded event</a> fires, just like your code would evaluate when packaged and minified. Mantri wraps around the powerfull <a href="https://developers.google.com/closure/" alt="Google Closure Tools">Google Closure Tools</a>, the same tools used by most of Google's web assets. Combined with modern day build flows Mantri offers a radically new way to manage your dependencies.
+            .why.right
+              h2 Why use Mantri?
+              p Harder, Better, Faster, Stronger. Mantri leaves no footprint on your deployed file, which means faster delivery of your app. Provides dead easy testing by exposing all your methods and properties on development, hides them on production. Simple and lean <code>provide</code> and <code>require</code> statements, and a complete workflow to build your codebase.
+        .row
+          .span12.technology
+            h2 How Mantri works
+            P Mantri is synchronous, leaves no footprint in your production file and can work with any other module loader. When developing, all your files are loaded synchronously before <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/DOMContentLoaded_(event)" title="MDN DOMContentLoaded event">DOMContentLoaded event</a> fires, just like your code would evaluate when packaged and minified. Mantri wraps around the powerfull <a href="https://developers.google.com/closure/" alt="Google Closure Tools">Google Closure Tools</a>, the same tools used by most of Google's web assets. Combined with modern day build flows Mantri offers a radically new way to manage your dependencies.
 
 
         .how-get-started
@@ -43,7 +45,9 @@ block content
               li Stable: N/A
               li Development: v0.1.0rc2
 
-
           .getting-started
             h3 Getting Started
             block gettingStarted
+
+          .goat-pose
+            img(src='/img/goat-pose-180.png', alt='Mantri Goat')
