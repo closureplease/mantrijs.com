@@ -4585,7 +4585,7 @@ hr.disqus {
   margin: 2em 0;
 }
 .page-index .home-header {
-  margin: 1em 0 3.5em;
+  margin: 3em 0 3.5em;
 }
 .page-index .home-header h1 {
   color: #335500;
@@ -4665,14 +4665,8 @@ hr.disqus {
 .page-index .row-fluid .span9 .why.right {
   float: right;
 }
-.page-index .row-fluid .span9 .technology {
-  clear: both;
-}
-.page-index .row-fluid .span9 .technology h1 {
+.page-index .row-fluid .span9 .technology h2 {
   margin-bottom: .5em;
-}
-.page-index .row-fluid .span9 .technology img {
-  width: 25%;
 }
 .page-index .row-fluid .span3 {
   width: 30%;
@@ -4691,58 +4685,8 @@ hr.disqus {
 .page-index .row-fluid .span3 .sidebar-nav > * {
   margin-bottom: 1.5em;
 }
-.page-index .row-fluid .span3 .sidebar-nav .latest-news ul {
-  list-style-type: none;
-  margin-left: 0;
-}
-.page-index .row-fluid .span3 .sidebar-nav .latest-news ul li {
-  margin-bottom: 15px;
-}
-.page-index .row-fluid .span3 .sidebar-nav .latest-news a {
-  display: block;
-}
-.page-index .row-fluid .span3 .sidebar-nav .latest-news a:hover {
-  text-decoration: none;
-}
-.page-index .row-fluid .span3 .sidebar-nav .latest-news a:hover .title {
-  text-decoration: underline;
-}
-.page-index .row-fluid .span3 .sidebar-nav .latest-news a .date {
-  display: block;
-  color: #142e01;
-  font-size: 75%;
-}
-.page-index .row-fluid .span3 .sidebar-nav .social a {
-  font-size: 1.6em;
-  color: white;
-  background: red;
-  border-radius: 50px;
-  height: 1em;
-  width: 1em;
-  padding: 0.4em;
-  margin-right: .8em;
-  display: inline-block;
-}
-.page-index .row-fluid .span3 .sidebar-nav .social a:hover {
-  text-decoration: none;
-}
-.page-index .row-fluid .span3 .sidebar-nav .social .twitter {
-  background-color: #2baae0;
-}
-.page-index .row-fluid .span3 .sidebar-nav .social .twitter:hover {
-  background-color: #289aca;
-}
-.page-index .row-fluid .span3 .sidebar-nav .social .github {
-  background-color: #5b95cc;
-}
-.page-index .row-fluid .span3 .sidebar-nav .social .github:hover {
-  background-color: #5185b7;
-}
-.page-index .row-fluid .span3 .sidebar-nav .social .feed {
-  background-color: #feaa1c;
-}
-.page-index .row-fluid .span3 .sidebar-nav .social .feed:hover {
-  background-color: #e1971a;
+.page-index .row-fluid .span3 .goat-pose {
+  margin-top: 150px;
 }
 .page-index .grunt-footer .inner .container .pull-right li a:hover {
   padding: 1.3em 1em;
