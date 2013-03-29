@@ -10,9 +10,9 @@ goog.require(<span class="string">'app.view'</span>);</code></pre>
 <blockquote>
 <p>It is advised to put all declarations at the top of your file.</p>
 </blockquote>
-<h2><a class="anchor" href="/api#the-functions" name="the-functions">The Functions</a></h2>
+<h2><a class="anchor" href="#the-functions" name="the-functions">The Functions</a></h2>
 <p>&lt;sup&gt;Heavily quoting the <a href="https://developers.google.com/closure/library/docs/tutorial" title="Google Closure Library Tutorial">Google Closure&#39;s Library Tutorial</a>&lt;/sup&gt;</p>
-<h3><a class="anchor" href="/api#goog.provide" name="goog.provide"><code>goog.provide()</code></a></h3>
+<h3><a class="anchor" href="#goog.provide" name="goog.provide"><code>goog.provide()</code></a></h3>
 <p>Type: <code>string</code> Default: None</p>
 <p>The <code>goog.provide()</code> function ensures the existence of the JavaScript object structure indicated by its argument. It checks to see whether each object property in the path expression exists, and if it doesn&#39;t exist it initializes it.</p>
 <p>The function call <code>goog.provide(&#39;app.view.about&#39;)</code> is equivalent to:</p>
@@ -23,7 +23,7 @@ app.view.about = app.view.about || {};</code></pre>
 <blockquote>
 <p>With <code>goog.provide()</code> you declare namespaces, not directory structure. Just provide a unique namespace and then require it. It&#39;s as simple as that.</p>
 </blockquote>
-<h3><a class="anchor" href="/api#goog.require" name="goog.require"><code>goog.require()</code></a></h3>
+<h3><a class="anchor" href="#goog.require" name="goog.require"><code>goog.require()</code></a></h3>
 <p>Type: <code>string</code> Default: None</p>
 <p>Implements a system for the dynamic resolution of dependencies that works in parallel with the BUILD system.</p>
 <p>For a better understanding of the inner workings check out <a href="https://developers.google.com/closure/library/docs/tutorial" title="Google Closure Library Tutorial">Google Closure&#39;s Library Tutorial</a> and scroll to <em>&quot;Creating a Namespace with goog.provide()&quot;</em>.</p>

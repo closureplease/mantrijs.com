@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>The Configuration File - Mantri: Javascript Dependency System</title><link rel="stylesheet" href="/css/main.css"><link href="http://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css"><link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon"><!-- link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')--><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-api page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container the-configuration-file"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1>The Configuration File</h1><p>&lt;sup&gt;<a href="/api/home">← Back to Home</a>&lt;/sup&gt;</p>
 <p>The <code>mantriConf.json</code> file is where you declare your vendor depedencies, build directives and more.</p>
-<h2><a class="anchor" href="/api#show-me" name="show-me">Show Me!</a></h2>
+<h2><a class="anchor" href="#show-me" name="show-me">Show Me!</a></h2>
 <p>The full configuration with default values.</p>
 <pre><code class="lang-js">{
   baseUrl: <span class="string">'folder/'</span>,
@@ -12,26 +12,26 @@
     exclude: [<span class="string">'library'</span>]
   }
 }</code></pre>
-<h2><a class="anchor" href="/api#not-for-production" name="not-for-production">Not For Production!</a></h2>
+<h2><a class="anchor" href="#not-for-production" name="not-for-production">Not For Production!</a></h2>
 <p>The <code>mantriConf.json</code> file should not exist in your production environment. So make sure you remove it at deployment. To define another location for the file use the <code>data-config</code> attribute in the <code>&lt;script&gt;</code> element:</p>
 <pre><code class="lang-html">&lt;script data-config=<span class="string">"js/config/mantriConf.json"</span> src=<span class="string">"js/libs/mantri.web.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></code></pre>
-<h2><a class="anchor" href="/api#options" name="options">Options</a></h2>
-<h3><a class="anchor" href="/api#baseurl" name="baseurl">baseUrl</a></h3>
+<h2><a class="anchor" href="#options" name="options">Options</a></h2>
+<h3><a class="anchor" href="#baseurl" name="baseurl">baseUrl</a></h3>
 <p>Type: <code>string</code> Default: current directory</p>
 <p>The base url path relative to your document root.</p>
-<h4><a class="anchor" href="/api#absolute-paths" name="absolute-paths">Absolute Paths</a></h4>
+<h4><a class="anchor" href="#absolute-paths" name="absolute-paths">Absolute Paths</a></h4>
 <p>For cases where you need absolute paths feel free to use <code>/</code></p>
 <p>Using <code>./</code> means literally the current path. Helps if your application lives under a folder.</p>
-<h3><a class="anchor" href="/api#libs" name="libs">libs</a></h3>
+<h3><a class="anchor" href="#libs" name="libs">libs</a></h3>
 <p>Type: <code>Object</code> Default: None</p>
 <p>Define all your third-party dependencies in this object. the key of the object is the lib&#39;s id and the value is the path to the file.</p>
 <blockquote>
 <p>The key used to id the lib does not carry any significance beyond the config file itself.</p>
 </blockquote>
-<h3><a class="anchor" href="/api#build.input" name="build.input">build.input</a></h3>
+<h3><a class="anchor" href="#build.input" name="build.input">build.input</a></h3>
 <p>Type: <code>string</code> Default: <strong>Required</strong></p>
 <p>Define the path and filename to your main file that bootstraps your application. The path should be relative to where the <code>Gruntfile.js</code> is. The filename should include the <code>.js</code> extension.</p>
-<h3><a class="anchor" href="/api#build.exclude" name="build.exclude">build.exclude</a></h3>
+<h3><a class="anchor" href="#build.exclude" name="build.exclude">build.exclude</a></h3>
 <p>Type: <code>Array</code> of strings Default: None</p>
 <p>Define the libraries that you want to exclude from bundling. This is useful when you want to load popular libraries from public CDN hosts.</p>
 <p>Use the <strong>key</strong> part of the <code>libs</code> hash to refer to libs you want excluded.</p>

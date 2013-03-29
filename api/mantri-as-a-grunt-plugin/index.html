@@ -4,7 +4,7 @@
 <pre><code class="lang-shell">npm install -g grunt-cli
 npm install grunt --save-dev</code></pre>
 <p>With Grunt and <em>Mantri</em> installed you are ready to get started. Running <code>grunt --help</code> at the command line should list the newly-installed <em>Mantri</em> tasks. In addition, <em>Mantri</em> and Grunt should be listed in package.json as a <code>devDependency</code>, which ensures that it will be installed whenever the <code>npm install</code> command is run.</p>
-<h2><a class="anchor" href="/api#overview" name="overview">Overview</a></h2>
+<h2><a class="anchor" href="#overview" name="overview">Overview</a></h2>
 <p>Here is a quick sample of a <a href="https://github.com/gruntjs/grunt/wiki/Sample-Gruntfile" title="Grunt&#39;s Gruntfile.js">Gruntfile</a> with <em>Mantri</em> directives.</p>
 <pre><code class="lang-js">module.exports = <span class="keyword">function</span>( grunt ) {
 
@@ -33,11 +33,11 @@ npm install grunt --save-dev</code></pre>
   <span class="comment">// the default task, when 'grunt' is executed with no options.</span>
   grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'deps'</span>]);
 };</code></pre>
-<h2><a class="anchor" href="/api#the-mantrideps-task" name="the-mantrideps-task">The <code>mantriDeps</code> Task</a></h2>
+<h2><a class="anchor" href="#the-mantrideps-task" name="the-mantrideps-task">The <code>mantriDeps</code> Task</a></h2>
 <p>Read the details of the <a href="/api/grunt-task-mantrideps/">Grunt Task mantriDeps</a>.</p>
-<h2><a class="anchor" href="/api#the-mantribuild-task" name="the-mantribuild-task">The <code>mantriBuild</code> Task</a></h2>
+<h2><a class="anchor" href="#the-mantribuild-task" name="the-mantribuild-task">The <code>mantriBuild</code> Task</a></h2>
 <p>Read the details of the <a href="/api/grunt-task-mantribuild/">Grunt Task mantriBuild</a>.</p>
-<h2><a class="anchor" href="/api#the-mantriinit-task" name="the-mantriinit-task">The <code>mantriInit</code> Task</a></h2>
+<h2><a class="anchor" href="#the-mantriinit-task" name="the-mantriinit-task">The <code>mantriInit</code> Task</a></h2>
 <p><code>mantriInit</code> does not require any configuration. It is a simple task that helps you get started with your application.</p>
 <p>For now it will copy the <code>mantri.web.js</code> and <code>mantriConf.json</code> files to the folder you define. If no folder is defined then the files will be copied to the folder where your <a href="https://github.com/gruntjs/grunt/wiki/Sample-Gruntfile" title="Grunt&#39;s Gruntfile.js">Gruntfile</a> is, which typically is your project&#39;s root.</p>
 <p>This is how to call <code>mantriInit</code> with no folder defined:</p>
