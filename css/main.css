@@ -3971,7 +3971,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: 'Wendy One';
+  font-family: 'Wendy One', serif;
   position: relative;
 }
 h3 {
@@ -4044,7 +4044,7 @@ i {
   line-height: 400px;
   font-size: 2.2em;
   letter-spacing: 0.06em;
-  font-family: 'Wendy One';
+  font-family: 'Wendy One', serif;
   color: #335500;
   text-transform: uppercase;
 }
@@ -4097,11 +4097,11 @@ i {
   line-height: 1.6em;
 }
 .hero-unit h1 {
-  font-size: 32px;
+  font-size: 42px;
   margin: 0 0 0.8em;
 }
 .hero-unit h2 {
-  font-size: 24px;
+  font-size: 34px;
 }
 .sidebar-nav .nav-list:first-child li:first-child {
   background: #69b941;
