@@ -3,7 +3,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Wendy One';
+  font-family: @brand-font-family;
   position: relative;
 }
 
@@ -75,9 +75,11 @@ i {
 
     line-height: 400px;
     font-size: 2.2em;
-    color: #000;
     letter-spacing: 0.06em;
-    text-transform: uppercase;  }
+    font-family: @brand-font-family;
+    color: @brand-color-font-dark;
+    text-transform: uppercase;
+  }
 }
 
 // .page-secondary .brand .logo {
