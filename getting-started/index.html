@@ -1,35 +1,41 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Getting Started - Mantri: Javascript Dependency System</title><link rel="stylesheet" href="/css/main.css"><link href="http://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css"><link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon"><!-- link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')--><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-docs page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container getting-started"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1>Getting Started</h1><p>&lt;sup&gt;<a href="/api/home">← Back to Home</a>&lt;/sup&gt;</p>
-<h2><a class="anchor" href="/api#introduction" name="introduction">Introduction</a></h2>
-<p><strong>Mantri</strong> is a Dependency Management System based on <a href="https://developers.google.com/closure/library/docs/depswriter" title="Google&#39;s DepsWriter tool">Google&#39;s DepsWriter tool</a>. The concept is that each file provides a <em>namespace</em> and can require any number of other <em>namespaces</em>:</p>
-<pre><code class="lang-js">goog.provide(<span class="string">'app.view.about'</span>);</code></pre>
-<p>The <code>goog.provide()</code> function ensures the existence of the JavaScript object structure indicated by its argument. It checks to see whether each object property in the path expression exists, and if it doesn&#39;t exist it initializes it.</p>
-<p>The above function call is equivalent to:</p>
-<pre><code class="lang-js">app = app || {};
-app.view = app.view || {};
-app.view.about = app.view.about || {};</code></pre>
-<p>Because <code>goog.provide()</code> only initializes properties if they don&#39;t already exist, it never overwrites properties.</p>
-<blockquote>
-<p>Using namespaces can be a style that you don&#39;t find to be of your taste. <strong>Mantri</strong> does not require that you follow this style. All you need to do is ensure that you uniquely identify your files with the <code>goog.provide()</code> method. Read more about the <a href="/api/goog-provide-and-require" title="goog.provide() and goog.require() functions.">goog.provide() and goog.require() functions</a>.</p>
-</blockquote>
-<p>&lt;sup&gt;Mantri is pronounced with the accent at the end, think &quot;<em>Mantree</em>&quot;.&lt;/sup&gt;</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Getting Started - Mantri: Javascript Dependency System</title><link rel="stylesheet" href="/css/main.css"><link href="http://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css"><link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon"><!-- link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')--><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-docs page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container getting-started"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1>Getting Started</h1><p>Mantri is installed and managed via <a href="https://npmjs.org/" title="Node package manager">NPM</a>, the <a href="http://nodejs.org/" title="Node.js">Node.js</a> package manager.</p>
+<p>Mantri is comprised of two packages:</p>
+<ul>
+<li><strong>mantri</strong> The main library that contains the build process and web components.</li>
+<li><strong>mantri-cli</strong> The command line tool to interface with Mantri.</li>
+</ul>
+<p>Mantri is also available as a <a href="http://gruntjs.com/">Grunt</a> plugin, however it is advised to install the command line tool for convenience.</p>
+<h2><a class="anchor" href="/api#installing-the-cli" name="installing-the-cli">Installing the CLI</a></h2>
+<p>In order to get started, you&#39;ll want to install Mantri&#39;s command line interface (CLI) globally. You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as Administrator (for Windows) to do this.</p>
+<pre><code class="lang-shell">npm install -g mantri-cli</code></pre>
+<p>This will put the <code>mantri</code> command in your system path, allowing it to be run from any directory.</p>
+<p>Note that installing <code>mantri-cli</code> does not install the <code>mantri</code> library! The job of the Mantri CLI is simple: run the version of Mantri which has been installed in your project. This allows multiple versions of Mantri to be installed on the same machine simultaneously.</p>
+<h2><a class="anchor" href="/api#creating-the-first-project" name="creating-the-first-project">Creating the First Project</a></h2>
+<p>From your project&#39;s root folder, install the Mantri library.</p>
+<pre><code class="lang-shell">npm install mantri --save-dev</code></pre>
+<p>During development, your web application will require two files to operate, the Mantri runtime and configuration files. The Mantri runtime is the only javascript file you need to include in your html document. To get those two files run the <code>init</code> cli command.</p>
+<pre><code class="lang-shell">mantri init</code></pre>
+<p>This will create the files <code>mantri.web.js</code> and <code>mantriConf.json</code> in your current directory. Use the <code>-h</code> flag to get help for the Mantri CLI in general or a spefic command <code>mantri init -h</code>.</p>
 <h2><a class="anchor" href="/api#your-web-application" name="your-web-application">Your Web Application</a></h2>
 <h3><a class="anchor" href="/api#dependency-declarations" name="dependency-declarations">Dependency Declarations</a></h3>
 <p>Mantri expects that you make <code>goog.provide()</code> and optionally <code>goog.require()</code> declarations at the top of all your files.</p>
 <p>You can declare all your third-party dependencies in the <a href="/api/the-configuration-file" title="The Mantri configuration file"><code>mantriConf.json</code></a> configuration file.</p>
-<blockquote>
-<p>If you create or edit a dependency declaration you will need to run the <a href="https://github.com/thanpolas/mantri/wiki/Grunt-Task-mantriDeps" title="The mantriDeps grunt task"><code>mantriDeps</code></a> task.</p>
-</blockquote>
-<p>The <code>mantriDeps</code> task will scan your codebase and generate a dependency tree that will be stored as <code>deps.js</code> in your Document Root. This file will be used to help <strong>Mantri</strong> figure out the paths to your files and include them in the document <strong>synchronously</strong>! Read more about <a href="/api/what-happens-on-page-load" title="What happens on page load">what happens at page load</a>.</p>
 <h3><a class="anchor" href="/api#your-html-document" name="your-html-document">Your HTML Document</a></h3>
 <p>The <code>html</code> document should look something like this:</p>
 <pre><code class="lang-html">{{#<span class="keyword">if</span> development}}
-  &lt;script data-require=<span class="string">"app"</span> src=<span class="string">"js/vendor/mantri.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  &lt;script data-require=<span class="string">"app"</span> src=<span class="string">"js/vendor/mantri.web.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 {{else}}
-  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"//mycdn.cloud.kom/42424242/buildApp.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"//xxx.cloudfront.net/42/buildApp.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
 {{/if}}</span></code></pre>
+<h3><a class="anchor" href="/api#resolving-dependencies" name="resolving-dependencies">Resolving Dependencies</a></h3>
+<p>As you&#39;ve noticed, you are <em>providing</em> and <em>requiring</em> namespaces, not filenames. This enables some interesting feats like being free to move files around without the fear of updating any of your files. Mantri will do the dirty job for you by scanning and mapping the namespaces to actual filenames, this is called the <code>deps</code> command.</p>
+<pre><code class="lang-shell">mantri deps --src=app/ --dest=app/deps.js</code></pre>
+<blockquote>
+<p>If you create or edit a dependency declaration you will need to run the <code>deps</code> command.</p>
+</blockquote>
 <h3><a class="anchor" href="/api#the-mantriconf.json-file" name="the-mantriconf.json-file">The mantriConf.json File</a></h3>
 <p>The <a href="/api/the-configuration-file" title="The Mantri configuration file"><code>mantriConf.json</code></a> file is the main configuration file for <strong>Mantri</strong>. By default, Mantri looks for this file in your Document Root, except declared otherwise.</p>
-<p>The type of the file is JSON, therefore no comments or  funny stuff, think <code>package.json</code>.</p>
+<p>The type of the file is JSON, therefore no comments or funny stuff, think <code>package.json</code>.</p>
 <p>This is a sample mantriConf file:</p>
 <pre><code class="lang-json">{
   <span class="string">"baseUrl"</span>: <span class="string">"js/"</span>,
@@ -47,8 +53,8 @@ app.view.about = app.view.about || {};</code></pre>
 <p>The properties talk for themselves, nothing to say here...</p>
 <h3><a class="anchor" href="/api#production" name="production">Production</a></h3>
 <p>Building your application is one command line away:</p>
-<pre><code class="lang-shell">grunt mantriBuild</code></pre>
-<p> Here is what happens when build is run:</p>
+<pre><code class="lang-shell">mantri build</code></pre>
+<p>This is roughly what happens when build is run:</p>
 <ul>
 <li>Scans your codebase and creates a dependency tree.</li>
 <li>Reads your <a href="/api/the-configuration-file" title="The Mantri configuration file"><code>mantriConf.json</code></a> file and parses the build rules.</li>
@@ -57,15 +63,13 @@ app.view.about = app.view.about || {};</code></pre>
 <li>Removes all <code>goog.provide()</code> and <code>goog.require()</code> declarations.</li>
 <li>Optionally compiles the whole bundle with the powerfull <a href="https://developers.google.com/closure/compiler/" title="The Google Closure Compiler">Closure Compiler</a>.</li>
 <li>Concatenates the vendor libs and your app.</li>
-<li>Optionally wraps your code in anything you like (<a href="https://github.com/amdjs/amdjs-api/wiki/AMD" title="The Asynchronous Module Definition (AMD) API">AMD</a>, <a href="http://www.commonjs.org/" title="CommonJS Module System">CommonJS</a>, anon function, you name it) <em>[not done yet]</em>.</li>
+<li>Optionally wraps your code in anything you like (<a href="https://github.com/amdjs/amdjs-api/wiki/AMD" title="The Asynchronous Module Definition (AMD) API">AMD</a>, <a href="http://www.commonjs.org/" title="CommonJS Module System">CommonJS</a>, anon function, you name it).</li>
 </ul>
 <h2><a class="anchor" href="/api#examples" name="examples">Examples</a></h2>
-<p>Clone the classical <a href="https://github.com/thanpolas/todoAppMantri" title="todoMVC using Mantri">ToDo MVC Application</a> using the <strong>Mantri</strong> Dependecy System:</p>
-<pre><code class="lang-shell">git clone git@github.com:thanpolas/todoAppMantri.git</code></pre>
+<p>Clone the classical <a href="https://github.com/closureplease/todoAppMantri" title="todoMVC using Mantri">ToDo MVC Application</a> using the <strong>Mantri</strong> Dependecy System:</p>
+<pre><code class="lang-shell">git clone git@github.com:closureplease/todoAppMantri.git</code></pre>
 <p>Launch a static web-server, or type <code>grunt deps</code> and <code>grunt build</code> to see <strong>Mantri</strong> in action.</p>
-<p>&lt;sup&gt;<a href="/api/#wrapper">↑ Back to Top</a>&lt;/sup&gt;</p>
-<p>&lt;sup&gt;<a href="/api/home">← Back to Home</a>&lt;/sup&gt;</p>
-</div></div><div class="span3"><div class="well sidebar-nav"></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><a href="https://github.com/closureplease/mantri" alt="Mantri on GitHub"><span>Mantri on GitHub &nbsp;</span><span class="icon-github"></span></a></li></ul><ul class="pull-left"><li>This site was built using <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">the sources</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li></ul></div></div></footer><script>var LIVE = !!window.location.origin.match(/mantrijs/);
+</div></div><div class="span3"><div class="well sidebar-nav"></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><a href="https://github.com/closureplease/mantri" alt="Mantri on GitHub"><span>Mantri on GitHub &nbsp;</span><span class="icon-github"></span></a></li></ul><ul class="pull-left"><li>This site was built using the <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">source, images and copy</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li></ul></div></div></footer><script>var LIVE = !!window.location.origin.match(/mantrijs/);
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

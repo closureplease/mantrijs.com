@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>How Mantri works - Mantri: Javascript Dependency System</title><link rel="stylesheet" href="/css/main.css"><link href="http://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css"><link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon"><!-- link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')--><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-api page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container how-mantri-works"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1>How Mantri works</h1><h2><a class="anchor" href="/api#introduction" name="introduction">Introduction</a></h2>
+<p><strong>Mantri</strong> is a Dependency Management System based on [Google&#39;s DepsWriter tool][depswriter]. The concept is that each file provides a <em>namespace</em> and can require any number of other <em>namespaces</em></p>
+<pre><code class="lang-js">goog.provide(<span class="string">'app.view.about'</span>);</code></pre>
+<p>The <code>goog.provide()</code> function ensures the existence of the JavaScript object structure indicated by its argument. It checks to see whether each object property in the path expression exists, and if it doesn&#39;t exist it initializes it.</p>
+<p>The above function call is equivalent to:</p>
+<pre><code class="lang-js">app = app || {};
+app.view = app.view || {};
+app.view.about = app.view.about || {};</code></pre>
+<p>Because <code>goog.provide()</code> only initializes properties if they don&#39;t already exist, it never overwrites properties.</p>
+<blockquote>
+<p>Using namespaces can be a style that you don&#39;t find to be of your taste. <strong>Mantri</strong> does not require that you follow this style. All you need to do is ensure that you uniquely identify your files with the <code>goog.provide()</code> method. Read more about the [goog.provide() and goog.require() functions][googrequire-wiki].</p>
+</blockquote>
+<ul>
+<li>Mantri is pronounced with the accent at the end, think &quot;<em>Mantree</em>&quot;.</li>
+</ul>
+</div></div><div class="span3"><div class="well sidebar-nav"><ul class="nav nav-list"><li class="nav-header"><span>Web API</span></li><li><a href="/api/the-script-element">The Script Element</a></li><li><a href="/api/goog-provide-and-require">goog provide and require</a></li><li><a href="/api/the-configuration-file">The Configuration File</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Grunt Tasks</span></li><li><a href="/api/mantri-as-a-grunt-plugin">Mantri As a Grunt Plugin</a></li><li><a href="/api/grunt-task-mantrideps">Grunt Task mantriDeps</a></li><li><a href="/api/grunt-task-mantribuild">Grunt Task mantriBuild</a></li></ul></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><a href="https://github.com/closureplease/mantri" alt="Mantri on GitHub"><span>Mantri on GitHub &nbsp;</span><span class="icon-github"></span></a></li></ul><ul class="pull-left"><li>This site was built using the <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">source, images and copy</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li></ul></div></div></footer><script>var LIVE = !!window.location.origin.match(/mantrijs/);
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', (LIVE ? 'UA-16398858-9' : 'xxxx'), 'mantrijs.com');
+ga('send', 'pageview');</script></body></html>
