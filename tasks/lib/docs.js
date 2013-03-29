@@ -25,6 +25,10 @@ exports.init = function(/*grunt*/) {
       if (h.indexOf('http') === 0) {
         return (a + q + h + q + b);
       } else {
+        if ( '#' === h.substr(0,1)) {
+          // it's an internal anchor using a hash
+          return (a + q + h.toLowerCase() + q + b);
+        }
         return (a + q + '/api' + h.toLowerCase() + q + b);
       }
     });
