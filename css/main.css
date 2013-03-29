@@ -3971,7 +3971,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Wendy One';
   position: relative;
 }
 h3 {
@@ -4592,14 +4592,19 @@ hr.disqus {
   position: relative;
 }
 .page-index .home-header .project-name {
-  font-size: 2.8em;
+  font-size: 3em;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+.page-index .home-header .javascript-logo {
+  width: 80px;
+  float: right;
 }
 .page-index .home-header .tag-line {
   display: block;
   margin-top: 0.1em;
   font-size: 1.61em;
+  letter-spacing: 0.05em;
   margin-bottom: 0;
 }
 .page-index .home-header .version {
