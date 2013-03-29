@@ -5,10 +5,9 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     title= (locals.title ? locals.title + ' - ' : '') + 'Mantri: Javascript Dependency System'
     link(rel='stylesheet', href='/css/main.css')
-    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:400,700')
-    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Spicy+Rice|Press+Start+2P')
+    link(href='http://fonts.googleapis.com/css?family=Wendy+One', rel='stylesheet', type='text/css')
     link(rel='shortcut icon', href='../img/favicon.ico', type='image/x-icon')
-    link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')
+    // link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')
     script(src='/js/vendor/lib/modernizr.min.js')
   body(class=locals.page ? 'page-' + locals.page + (locals.page === 'index' ? '' : ' page-secondary') : '')
     include blocks/header
