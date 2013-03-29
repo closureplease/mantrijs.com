@@ -8,20 +8,20 @@ h1, h2, h3 {
 }
 
 h3 {
-  font-size: 1.2em;
+  font-size: 1.6em;
   margin-top: 1em;
 }
 
 a {
   &:hover {
-    color: @brand-color-strong;
+    color: @brand-color-topnav;
     text-decoration: underline;
   }
 }
 
 a.anchor {
   position: relative;
-  color: @brand-color-font-dark;
+  color: @brand-color-footer;
   &:hover {
     text-decoration: none;
   }
@@ -77,7 +77,7 @@ i {
     font-size: 2.2em;
     letter-spacing: 0.06em;
     font-family: @brand-font-family;
-    color: @brand-color-font-dark;
+    color: @brand-color-footer;
     text-transform: uppercase;
   }
 }
@@ -143,14 +143,14 @@ i {
 }
 
 .sidebar-nav .nav-list:first-child li:first-child {
-  background: @brand-color-strong;
+  background: @brand-color-topnav;
 }
 
 .sidebar-nav {
   margin-top: 220px;
   padding: 0;
   .nav-header {
-    background: @brand-color-strong;
+    background: @brand-color-topnav;
     color: white;
     margin: 0;
     text-shadow: none;
@@ -193,7 +193,7 @@ i {
       margin-top: 20px;
     }
   // &:first-child li:first-child {
-  //   background: @brand-color-strong;
+  //   background: @brand-color-topnav;
   //   padding-left: 13px;
   // }
     a {
@@ -385,7 +385,7 @@ i {
 
 .plugin.contrib:before {
   position: absolute;
-  background-color: @brand-color-strong;
+  background-color: @brand-color-topnav;
   width: 32px;
   height: 39px;
   left: 8px;
@@ -413,7 +413,7 @@ i {
   content: "";
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-top: 10px solid @brand-color-strong;
+  border-top: 10px solid @brand-color-topnav;
   width: 0px;
   height: 0px;
   left: 8px;
@@ -427,11 +427,11 @@ i {
   line-height: 4em;
   letter-spacing: 1px;
   text-shadow: @text-shadow;
-  background: @brand-color-font-dark;
+  background: @brand-color-footer;
   .inner {
-    background: @brand-color-font-dark;
+    background: @brand-color-footer;
     .container {
-      background: @brand-color-font-dark;
+      background: @brand-color-footer;
       .pull-left {
         margin-left: 10px;
         color: #408500;
@@ -441,13 +441,13 @@ i {
           &:hover {
             text-decoration: underline;
             background: none;
-            color: @brand-color-strong;
+            color: @brand-color-topnav;
           }
         }
       }
       a:hover {
         text-decoration: none;
-        background: @brand-color-hover;
+        background: @brand-color-footer-hover;
       }
       .inner {
         margin: 0px auto;
@@ -458,7 +458,6 @@ i {
         li {
           float: left;
           line-height: 4em;
-          height: 4em;
           &:last-child {
             margin-right: 0;
           }
@@ -586,7 +585,7 @@ pre .literal {
   .nav {
     float: right;
     margin-right: 0;
-    background: @brand-color-strong;
+    background: @brand-color-topnav;
   }
   .navbar-search {
     display: none;
