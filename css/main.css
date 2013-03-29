@@ -3468,14 +3468,14 @@ input[type="submit"].btn.btn-mini {
   border-radius: 6px 0 6px 6px;
 }
 .navbar-inverse .navbar-inner {
-  background-color: #295214;
-  background-image: -moz-linear-gradient(top, #222222, #339900);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#339900));
-  background-image: -webkit-linear-gradient(top, #222222, #339900);
-  background-image: -o-linear-gradient(top, #222222, #339900);
-  background-image: linear-gradient(to bottom, #222222, #339900);
+  background-color: #3e5e2e;
+  background-image: -moz-linear-gradient(top, #222222, #69b941);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#69b941));
+  background-image: -webkit-linear-gradient(top, #222222, #69b941);
+  background-image: -o-linear-gradient(top, #222222, #69b941);
+  background-image: linear-gradient(to bottom, #222222, #69b941);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff339900', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff69b941', GradientType=0);
   border-color: #252525;
 }
 .navbar-inverse .brand,
@@ -3504,7 +3504,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .nav .active > a:hover,
 .navbar-inverse .nav .active > a:focus {
   color: #ffffff;
-  background-color: #339900;
+  background-color: #69b941;
 }
 .navbar-inverse .navbar-link {
   color: #ffffff;
@@ -3514,13 +3514,13 @@ input[type="submit"].btn.btn-mini {
   color: #ffffff;
 }
 .navbar-inverse .divider-vertical {
-  border-left-color: #339900;
+  border-left-color: #69b941;
   border-right-color: #222222;
 }
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
-  background-color: #339900;
+  background-color: #69b941;
   color: #ffffff;
 }
 .navbar-inverse .nav li.dropdown > a:hover .caret,
@@ -3540,8 +3540,8 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-inverse .navbar-search .search-query {
   color: #ffffff;
-  background-color: #66ff1a;
-  border-color: #339900;
+  background-color: #b2dd9d;
+  border-color: #69b941;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15);
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.15);
@@ -3574,17 +3574,17 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .btn-navbar {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #1e400d;
-  background-image: -moz-linear-gradient(top, #151515, #2b8000);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#151515), to(#2b8000));
-  background-image: -webkit-linear-gradient(top, #151515, #2b8000);
-  background-image: -o-linear-gradient(top, #151515, #2b8000);
-  background-image: linear-gradient(to bottom, #151515, #2b8000);
+  background-color: #324f24;
+  background-image: -moz-linear-gradient(top, #151515, #5ea63a);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#151515), to(#5ea63a));
+  background-image: -webkit-linear-gradient(top, #151515, #5ea63a);
+  background-image: -o-linear-gradient(top, #151515, #5ea63a);
+  background-image: linear-gradient(to bottom, #151515, #5ea63a);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff151515', endColorstr='#ff2b8000', GradientType=0);
-  border-color: #2b8000 #2b8000 #113300;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff151515', endColorstr='#ff5ea63a', GradientType=0);
+  border-color: #5ea63a #5ea63a #3e6e26;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #2b8000;
+  *background-color: #5ea63a;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -3596,12 +3596,12 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .btn-navbar.disabled,
 .navbar-inverse .btn-navbar[disabled] {
   color: #ffffff;
-  background-color: #2b8000;
-  *background-color: #226600;
+  background-color: #5ea63a;
+  *background-color: #549334;
 }
 .navbar-inverse .btn-navbar:active,
 .navbar-inverse .btn-navbar.active {
-  background-color: #1a4d00 \9;
+  background-color: #49802d \9;
 }
 .label,
 .badge {
@@ -3925,7 +3925,7 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
-  border-color: #339900;
+  border-color: #69b941;
   outline: 0;
   outline: thin dotted \9;
   /* IE6-9 */
@@ -3979,7 +3979,7 @@ h3 {
   margin-top: 1em;
 }
 a:hover {
-  color: #339900;
+  color: #69b941;
   text-decoration: underline;
 }
 a.anchor {
@@ -4104,14 +4104,14 @@ i {
   font-size: 24px;
 }
 .sidebar-nav .nav-list:first-child li:first-child {
-  background: #339900;
+  background: #69b941;
 }
 .sidebar-nav {
   margin-top: 220px;
   padding: 0;
 }
 .sidebar-nav .nav-header {
-  background: #339900;
+  background: #69b941;
   color: white;
   margin: 0;
   text-shadow: none;
@@ -4339,7 +4339,7 @@ i {
 }
 .plugin.contrib:before {
   position: absolute;
-  background-color: #339900;
+  background-color: #69b941;
   width: 32px;
   height: 39px;
   left: 8px;
@@ -4364,7 +4364,7 @@ i {
   content: "";
   border-left: 16px solid transparent;
   border-right: 16px solid transparent;
-  border-top: 10px solid #339900;
+  border-top: 10px solid #69b941;
   width: 0px;
   height: 0px;
   left: 8px;
@@ -4396,7 +4396,7 @@ i {
 .master-footer .inner .container .pull-left a:hover {
   text-decoration: underline;
   background: none;
-  color: #339900;
+  color: #69b941;
 }
 .master-footer .inner .container a:hover {
   text-decoration: none;
@@ -4493,7 +4493,7 @@ pre .literal {
   border-radius: 0;
   filter: none;
   background-image: none;
-  background-color: #339900;
+  background-color: #69b941;
 }
 .navbar-inverse .navbar-inner .brand,
 .navbar-inverse .navbar-inner .nav > li > a {
@@ -4503,7 +4503,7 @@ pre .literal {
 .navbar .nav {
   float: right;
   margin-right: 0;
-  background: #339900;
+  background: #69b941;
 }
 .navbar .navbar-search {
   display: none;
