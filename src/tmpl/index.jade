@@ -32,10 +32,11 @@ block content
             h2 How Mantri works
             P Mantri is synchronous, leaves no footprint in your production file and can work with any other module loader. When developing, all your files are loaded synchronously before <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/DOMContentLoaded_(event)" title="MDN DOMContentLoaded event">DOMContentLoaded event</a> fires, just like your code would evaluate when packaged and minified. Mantri wraps around the powerfull <a href="https://developers.google.com/closure/" alt="Google Closure Tools">Google Closure Tools</a>, the same tools used by most of Google's web assets. Combined with modern day build flows Mantri offers a radically new way to manage your dependencies.
 
-
-        .how-get-started
-          h2 How do I get started?
-          block gettingStarted
+        .row
+          .span12
+            .how-get-started
+              h2 How do I get started?
+              block gettingStarted
 
       .span3
         .well.sidebar-nav
