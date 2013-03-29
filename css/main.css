@@ -212,12 +212,12 @@ body {
   background-color: #ffffff;
 }
 a {
-  color: #0707e6;
+  color: #0085ff;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #05059c;
+  color: #005db3;
   text-decoration: underline;
 }
 .img-rounded {
@@ -2021,14 +2021,14 @@ table th[class*="span"],
 .dropdown-submenu:focus > a {
   text-decoration: none;
   color: #ffffff;
-  background-color: #0707dc;
-  background-image: -moz-linear-gradient(top, #0707e6, #0606cd);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0707e6), to(#0606cd));
-  background-image: -webkit-linear-gradient(top, #0707e6, #0606cd);
-  background-image: -o-linear-gradient(top, #0707e6, #0606cd);
-  background-image: linear-gradient(to bottom, #0707e6, #0606cd);
+  background-color: #0080f5;
+  background-image: -moz-linear-gradient(top, #0085ff, #0078e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0085ff), to(#0078e6));
+  background-image: -webkit-linear-gradient(top, #0085ff, #0078e6);
+  background-image: -o-linear-gradient(top, #0085ff, #0078e6);
+  background-image: linear-gradient(to bottom, #0085ff, #0078e6);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0707e6', endColorstr='#ff0606cd', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0085ff', endColorstr='#ff0078e6', GradientType=0);
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -2036,14 +2036,14 @@ table th[class*="span"],
   color: #ffffff;
   text-decoration: none;
   outline: 0;
-  background-color: #0707dc;
-  background-image: -moz-linear-gradient(top, #0707e6, #0606cd);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0707e6), to(#0606cd));
-  background-image: -webkit-linear-gradient(top, #0707e6, #0606cd);
-  background-image: -o-linear-gradient(top, #0707e6, #0606cd);
-  background-image: linear-gradient(to bottom, #0707e6, #0606cd);
+  background-color: #0080f5;
+  background-image: -moz-linear-gradient(top, #0085ff, #0078e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0085ff), to(#0078e6));
+  background-image: -webkit-linear-gradient(top, #0085ff, #0078e6);
+  background-image: -o-linear-gradient(top, #0085ff, #0078e6);
+  background-image: linear-gradient(to bottom, #0085ff, #0078e6);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0707e6', endColorstr='#ff0606cd', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0085ff', endColorstr='#ff0078e6', GradientType=0);
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -2292,17 +2292,17 @@ input[type="button"].btn-block {
 .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #2507e6;
-  background-image: -moz-linear-gradient(top, #0707e6, #5107e6);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0707e6), to(#5107e6));
-  background-image: -webkit-linear-gradient(top, #0707e6, #5107e6);
-  background-image: -o-linear-gradient(top, #0707e6, #5107e6);
-  background-image: linear-gradient(to bottom, #0707e6, #5107e6);
+  background-color: #0063ff;
+  background-image: -moz-linear-gradient(top, #0085ff, #0030ff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0085ff), to(#0030ff));
+  background-image: -webkit-linear-gradient(top, #0085ff, #0030ff);
+  background-image: -o-linear-gradient(top, #0085ff, #0030ff);
+  background-image: linear-gradient(to bottom, #0085ff, #0030ff);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0707e6', endColorstr='#ff5107e6', GradientType=0);
-  border-color: #5107e6 #5107e6 #37059c;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0085ff', endColorstr='#ff0030ff', GradientType=0);
+  border-color: #0030ff #0030ff #0022b3;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  *background-color: #5107e6;
+  *background-color: #0030ff;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
@@ -2314,12 +2314,12 @@ input[type="button"].btn-block {
 .btn-primary.disabled,
 .btn-primary[disabled] {
   color: #ffffff;
-  background-color: #5107e6;
-  *background-color: #4906cd;
+  background-color: #0030ff;
+  *background-color: #002be6;
 }
 .btn-primary:active,
 .btn-primary.active {
-  background-color: #4005b5 \9;
+  background-color: #0026cc \9;
 }
 .btn-warning {
   color: #ffffff;
@@ -2518,14 +2518,14 @@ input[type="submit"].btn.btn-mini {
 .btn-link {
   border-color: transparent;
   cursor: pointer;
-  color: #0707e6;
+  color: #0085ff;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
 }
 .btn-link:hover,
 .btn-link:focus {
-  color: #05059c;
+  color: #005db3;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -2666,7 +2666,7 @@ input[type="submit"].btn.btn-mini {
   background-color: #e6e6e6;
 }
 .btn-group.open .btn-primary.dropdown-toggle {
-  background-color: #5107e6;
+  background-color: #0030ff;
 }
 .btn-group.open .btn-warning.dropdown-toggle {
   background-color: #f89406;
@@ -2801,7 +2801,7 @@ input[type="submit"].btn.btn-mini {
 .nav-list > .active > a:focus {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-  background-color: #0707e6;
+  background-color: #0085ff;
 }
 .nav-list [class^="icon-"],
 .nav-list [class*=" icon-"] {
@@ -2884,7 +2884,7 @@ input[type="submit"].btn.btn-mini {
 .nav-pills > .active > a:hover,
 .nav-pills > .active > a:focus {
   color: #ffffff;
-  background-color: #0707e6;
+  background-color: #0085ff;
 }
 .nav-stacked > li {
   float: none;
@@ -2939,14 +2939,14 @@ input[type="submit"].btn.btn-mini {
   border-radius: 6px;
 }
 .nav .dropdown-toggle .caret {
-  border-top-color: #0707e6;
-  border-bottom-color: #0707e6;
+  border-top-color: #0085ff;
+  border-bottom-color: #0085ff;
   margin-top: 6px;
 }
 .nav .dropdown-toggle:hover .caret,
 .nav .dropdown-toggle:focus .caret {
-  border-top-color: #05059c;
-  border-bottom-color: #05059c;
+  border-top-color: #005db3;
+  border-bottom-color: #005db3;
 }
 /* move down carets for tabs */
 .nav-tabs .dropdown-toggle .caret {
@@ -3318,7 +3318,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  background-color: #33cc00;
+  background-color: #133d13;
   color: #333333;
   text-decoration: none;
 }
@@ -3497,7 +3497,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar-inverse .nav > li > a:focus,
 .navbar-inverse .nav > li > a:hover {
-  background-color: #33cc00;
+  background-color: #133d13;
   color: #ffffff;
 }
 .navbar-inverse .nav .active > a,
@@ -3975,7 +3975,7 @@ h3 {
   position: relative;
 }
 h3 {
-  font-size: 1.2em;
+  font-size: 1.6em;
   margin-top: 1em;
 }
 a:hover {
@@ -4412,7 +4412,6 @@ i {
 .master-footer .inner .container ul li {
   float: left;
   line-height: 4em;
-  height: 4em;
 }
 .master-footer .inner .container ul li:last-child {
   margin-right: 0;
