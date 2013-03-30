@@ -4089,7 +4089,7 @@ i {
 .navbar-fixed-bottom .container,
 .navbar .container,
 .grunt-footer .inner .container {
-  width: 1100px;
+  min-width: 900px;
 }
 .hero-unit {
   font-size: 16px;
@@ -4433,19 +4433,15 @@ pre.terminal .green {
   position: relative;
 }
 .page-index .home-header .project-name {
-  font-size: 3em;
+  font-size: 2.2em;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-.page-index .home-header .javascript-logo {
-  width: 80px;
-  float: right;
 }
 .page-index .home-header .tag-line {
   display: block;
   margin-top: 0.1em;
-  font-size: 1.61em;
-  letter-spacing: 0.05em;
+  font-size: 1.1em;
+  letter-spacing: 0.01em;
   margin-bottom: 0;
 }
 .page-index .home-header .version {
@@ -4460,12 +4456,12 @@ pre.terminal .green {
   display: none;
 }
 .page-index .brand-firstpage {
-  height: 340px;
+  height: 280px;
   width: 100%;
   display: block;
 }
 .page-index .brand-firstpage .logo {
-  background: transparent url(../img/mantri-logo-whole-340.png) no-repeat;
+  background: transparent url(../img/mantri-logo-whole-270.png) no-repeat;
   display: block;
   height: 100%;
   width: 100%;
@@ -4487,11 +4483,11 @@ pre.terminal .green {
   padding-left: 20px;
 }
 .page-index .row-fluid .span9 h2 {
-  font-size: 30px;
+  font-size: 28px;
+  font-weight: normal;
   margin: 2em 0 0.4em;
 }
 .page-index .row-fluid .span9 .why {
-  margin: 3em 0;
   width: 48%;
 }
 .page-index .row-fluid .span9 .why h2 {
@@ -4517,10 +4513,12 @@ pre.terminal .green {
   margin-left: 0;
 }
 .page-index .row-fluid .span3 .sidebar-nav {
-  margin-top: 93px;
+  margin-top: 41px;
   padding-left: 3em;
 }
 .page-index .row-fluid .span3 .sidebar-nav h3 {
+  font-size: 24px;
+  font-weight: normal;
   margin-bottom: 0;
 }
 .page-index .row-fluid .span3 .sidebar-nav > * {

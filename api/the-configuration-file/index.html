@@ -55,7 +55,7 @@
 <p>Define the destination output file.</p>
 <h3><a class="anchor" href="#build.outputwrapper" name="build.outputwrapper">build.outputWrapper</a></h3>
 <p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: none</p>
-<p>Define a wrapping string for your build application. Use the keyword <code>%output%</code> to position the contents of your app:</p>
+<p>Define a wrapping string for your build application. Use the keyword <code>&lt;%=output%&gt;</code> to position the contents of your app:</p>
 <pre><code class="lang-json"><span class="string">"build"</span>: {
   <span class="string">"outputWrapper"</span>: <span class="string">"(function(){&lt;%=output%&gt;}).call(this);"</span>
 }</code></pre>
