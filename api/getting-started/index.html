@@ -52,8 +52,16 @@ goog.require(<span class="string">'myApp.helpers'</span>);</code></pre>
     <span class="string">"ember"</span>: <span class="string">"lib/ember-latest.min"</span>
   },
 
+  <span class="string">"deps"</span>: {
+    <span class="string">"src"</span>: <span class="string">"js/"</span>,
+    <span class="string">"root"</span>: <span class="string">"./"</span>,
+    <span class="string">"dest"</span>: <span class="string">"deps.js"</span>
+  },
+
   <span class="string">"build"</span>: {
     <span class="string">"input"</span>: <span class="string">"js/app.js"</span>,
+    <span class="string">"dest"</span>: <span class="string">"dist/app.min.js"</span>,
+    <span class="string">"outputWrapper"</span>: <span class="string">"(function(){&lt;%=output%&gt;}).call(this);"</span>,
     <span class="string">"exclude"</span>: [<span class="string">"jquery"</span>]
   }
 }</code></pre>
