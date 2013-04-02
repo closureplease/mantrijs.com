@@ -30,12 +30,20 @@ block content
           .span12.technology
             h2 How Mantri works
             P Mantri is synchronous, leaves no footprint in your production file and can work with any other module loader. When developing, all your files are loaded synchronously before <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/DOMContentLoaded_(event)" title="MDN DOMContentLoaded event">DOMContentLoaded event</a> fires, just like your code would evaluate when packaged and minified. Mantri wraps around the powerfull <a href="https://developers.google.com/closure/" alt="Google Closure Tools">Google Closure Tools</a>, the same tools used by most of Google's web assets. Combined with modern day build flows Mantri offers a radically new way to manage your dependencies.
+            p Here is a breakdown of what happens when you do a page load during development, just hover over the diagram.
+            figure.page-load
+              img(src='https://docs.google.com/drawings/d/1BoxwLKDjwAD0UmPirhy3_YvcVmcL1cHH6yMSO6uTjLc/pub?w=786&amp;h=1524', alt='Mantri Development Diagram')
+              // img(src='https://docs.google.com/drawings/d/1BoxwLKDjwAD0UmPirhy3_YvcVmcL1cHH6yMSO6uTjLc/pub?w=524&amp;h=1016', alt='Mantri Development Diagram')
+              // img(src='/img/mantri-devel-diagram.svg', alt='Mantri Development Diagram')
+              // w=786&amp;h=1524">
+              figcaption Mantri page loading sequence
 
         .row
           .span12
             .how-get-started
               h2 How do I get started?
               block gettingStarted
+
 
       .span3
         .well.sidebar-nav
