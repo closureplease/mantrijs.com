@@ -3,12 +3,17 @@ footer.master-footer
     .container
       ul.pull-right
         li.social
-          a(href='https://github.com/closureplease/mantri', alt='Mantri on GitHub')
-            span Mantri on GitHub &nbsp;
-            span.icon-github
+          iframe(src='http://ghbtns.com/github-btn.html?user=closureplease&amp;repo=mantri&amp;type=watch&amp;count=true', allowtransparency='true', frameborder='0', scrolling='0', width='94', height='20')
+          iframe(url='http://mantrijs.com', text='zit', allowtransparency='true', frameborder='0', scrolling='no',
+        src='https://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fmantrijs.com&text=Check%20out%20Mantri%2C%20a%20Javascript%20Dependency%20System%20extraordinaire&hashtags=mantrijs',
+        style='width:130px; height:20px;')
+          //a(href='https://github.com/closureplease/mantri', alt='Mantri on GitHub')
+          //span Mantri on GitHub &nbsp;
+          //span.icon-github
       ul.pull-left
         li
           | This site was built using the <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">source, images and copy</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a>
+        li The rest (c) 2013 <a href="http://thanpol.as" alt="Thanasis Polychronakis Website">Thanasis Polychronakis</a> Licensed under the <a href="https://github.com/closureplease/mantri/blob/master/LICENSE-MIT" alt="MIT LICENSE">MIT</a>.
 script
   var LIVE = !!window.location.origin.match(/mantrijs/);
 

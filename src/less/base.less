@@ -263,10 +263,12 @@ i {
   background: @brand-color-footer;
   .inner {
     background: @brand-color-footer;
+    height: 80px;
     .container {
       background: @brand-color-footer;
       .pull-left {
         margin-left: 10px;
+        width: 500px;
         color: #408500;
         a {
           text-decoration: underline;
@@ -288,9 +290,10 @@ i {
       ul {
         margin: 0;
         list-style-type: none;
+        margin-top: 24px;
+
         li {
           float: left;
-          line-height: 4em;
           &:last-child {
             margin-right: 0;
           }
@@ -304,11 +307,8 @@ i {
             color: #FFF;
             padding: 1.4em 1em;
           }
-          &.social a,
-          &.social a:hover {
-            //font-size: 1.3em;
-            //padding: .95em .6em;
-            vertical-align: middle;
+          &.social {
+            margin-top: 8px;
           }
         }
       }
@@ -322,7 +322,8 @@ i {
 }
 
 .navbar .container {
-  position: relative;
+  //position: relative;
+  width: 960px;
 }
 
 .navbar .brand {
