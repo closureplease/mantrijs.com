@@ -29,10 +29,10 @@ block content
             P Mantri uses <a href="http://addyosmani.com/blog/essential-js-namespacing/" alt="Essential Javascript Namespacing Patterns by Addy Osmani">Namespaces</a>. Each file provides a namespace and can require any number of other namespaces.
             pre
               code
-                |goog.provide('foo.bar') -&gt; "I provide this namespace."
-                |goog.require('foo.baz') -&gt; "I require this namespace."
+                |goog.provide('foo.bar'); // I provide this namespace.
+                |goog.require('foo.baz'); // I require this namespace.
               code
-                |The result is a giant dependency tree.
+                |// The result is a giant dependency tree.
 
             p When developing, all your files are loaded synchronously before <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/DOMContentLoaded_(event)" title="MDN DOMContentLoaded event">DOMContentLoaded event</a> fires, just like your code would evaluate when packaged and minified. Using modern day build flows, Mantri will build your application removing all the <code>provide</code> and <code>require</code> statements.
             p Here is a breakdown of what happens when you do a page load during development, just hover over the diagram.
