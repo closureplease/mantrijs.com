@@ -1,8 +1,5 @@
 extends layout
 
-block gettingStarted
-  p Read the <a href="/getting-started/">Getting Started</a> guide for instructions on using Mantri.
-
 block content
   .container
     .row-fluid
@@ -29,29 +26,26 @@ block content
         .row
           .span12.technology
             h2 How Mantri works
-            P Mantri is synchronous, leaves no footprint in your production file and can work with any other module loader. When developing, all your files are loaded synchronously before <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/DOMContentLoaded_(event)" title="MDN DOMContentLoaded event">DOMContentLoaded event</a> fires, just like your code would evaluate when packaged and minified. Mantri wraps around the powerfull <a href="https://developers.google.com/closure/" alt="Google Closure Tools">Google Closure Tools</a>, the same tools used by most of Google's web assets. Combined with modern day build flows Mantri offers a radically new way to manage your dependencies.
+            P Mantri uses <a href="http://addyosmani.com/blog/essential-js-namespacing/" alt="Essential Javascript Namespacing Patterns by Addy Osmani">Namespaces</a>. Each file provides a namespace and can require any number of other namespaces.
+            pre
+              code
+                |goog.provide('foo.bar') -&gt; "I provide this namespace."
+                |goog.require('foo.baz') -&gt; "I require this namespace."
+              code
+                |The result is a giant dependency tree.
+
+            p When developing, all your files are loaded synchronously before <a href="https://developer.mozilla.org/en-US/docs/Mozilla_event_reference/DOMContentLoaded_(event)" title="MDN DOMContentLoaded event">DOMContentLoaded event</a> fires, just like your code would evaluate when packaged and minified. Using modern day build flows, Mantri will build your application removing all the <code>provide</code> and <code>require</code> statements.
             p Here is a breakdown of what happens when you do a page load during development, just hover over the diagram.
             figure.page-load
               img(src='https://docs.google.com/drawings/d/1BoxwLKDjwAD0UmPirhy3_YvcVmcL1cHH6yMSO6uTjLc/pub?w=786&amp;h=1524', alt='Mantri Development Diagram')
-              // img(src='https://docs.google.com/drawings/d/1BoxwLKDjwAD0UmPirhy3_YvcVmcL1cHH6yMSO6uTjLc/pub?w=524&amp;h=1016', alt='Mantri Development Diagram')
-              // img(src='/img/mantri-devel-diagram.svg', alt='Mantri Development Diagram')
-              // w=786&amp;h=1524">
               figcaption Mantri page loading sequence
-
-        .row
-          .span12
-            .how-get-started
-              h2 How do I get started?
-              block gettingStarted
-
-
       .span3
         .well.sidebar-nav
           .latest-version
             h3 Latest Version
             ul
-              li Stable: N/A
-              li Development: v0.1.0rc5
+              li Stable: v0.1.0
+              li Development: N/A
 
           .getting-started
             h3 Getting Started
@@ -59,3 +53,30 @@ block content
 
           .goat-pose
             img(src='/img/goat-pose-180.png', alt='Mantri Goat')
+
+    .row-fluid
+      .span12.hero-unit
+        .row
+          .span8.offset4
+            h2 Writing Modular Code
+            p Writing Modular Code has everything to do with <a href="https://en.wikipedia.org/wiki/Modular_programming" alt="wikipedia article about Modular Programming">modular programming</a> and nothing to do with module definitions (<a href="http://www.commonjs.org/specs/modules/1.0/" alt="Common JS">CJS</a>, <a href="https://github.com/amdjs/amdjs-api/wiki/AMD" alt="Wikipedia :: The Asynchronous Module Definition (AMD) API">AMD</a>, <a href="http://wiki.ecmascript.org/doku.php?id=harmony:modules" alt="The proposal for a module system for ECMAScript">harmony</a>). You can write perfectly modular code by <a html="http://thanpol.as/javascript/development-using-namespaces/" alt="Development Using Namespaces by thanpolas">using namespaces</a>. It is always interesting to go back where you started and discover something new...
+            h3 Busting Myths
+            ul.module-myths
+              li Modern day build flows have changed the way we work.
+              li The development environment is decoupled from production.
+              li Module Definition Patterns and <em>Module</em> Loaders are two different things.
+              li Modules !== Files
+              li Modular Programming is not a trademark of AMD, CJS or any Module Definition Pattern.
+              li Developing using Namespaces improves visibility throughout the project, enhanses maintainability and enables scalable code.
+        .row
+          .span8.offset4
+            h3 Getting Started
+            p Mantri consinsts of the Web Runtime and the Command Line Tools. The Web Runtime's job is to load the files of your application during development. The Command Line Tools perform various tasks like building your application and calculating dependencies.
+            p Read the <a href="/getting-started/">Getting Started</a> guide for instructions on using Mantri.
+        .row.support
+          .span4.offset8
+            h4 Support
+            p I'd love to help, find me lurking on Freenode in #grunt or just ping me on twitter <a href="https://twitter.com/thanpolas" alt"Thanasis Polychronakis on Twitter">@thanpolas</a>.
+
+
+          //-   p Mantri wraps around the powerfull <a href="https://developers.google.com/closure/" alt="Google Closure Tools">Google Closure Tools</a>, the same tools used by most of Google's web assets.
