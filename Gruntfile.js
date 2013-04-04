@@ -175,7 +175,10 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['build', 'less:production', 'server']);
   grunt.registerTask('dev', ['build', 'less:development', 'jshint', 'watch']);
   grunt.registerTask('test', ['nodeunit']);
-  grunt.registerTask('deploy', ['githubPages:target']);
+  grunt.registerTask('deploy', [
+    'build',
+    'githubPages:target'
+  ]);
   grunt.registerTask('server', [
     'livereload-start',
     'connect:livereload',
