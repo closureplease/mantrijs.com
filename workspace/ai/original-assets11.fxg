@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Graphic version="2.0" viewHeight="500" viewWidth="600" ATE:version="1.0.0" flm:version="1.0.0" d:id="1" d:using="" xmlns="http://ns.adobe.com/fxg/2008" xmlns:ATE="http://ns.adobe.com/ate/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:flm="http://ns.adobe.com/flame/2008">
+  <Library/>
+  <Group blendMode="normal" d:type="layer" d:userLabel="Layer 1">
+    <Group flm:isDrawingObject="false">
+      <Path data="M-0.05 -28.4 -0.05 28.4Q-11.767773 28.382227 -20.1 20.05 -28.4 11.75 -28.4 0 -28.4 -11.75 -20.1 -20.1 -11.767773 -28.382227 -0.05 -28.4Z">
+        <fill>
+          <SolidColor color="#FFFFFF"/>
+        </fill>
+      </Path>
+      <Path data="M-0.05 28.4 -0.05 -28.4 0 -28.4Q11.75 -28.4 20.05 -20.1 28.4 -11.75 28.4 0 28.4 11.75 20.05 20.05 11.75 28.4 0 28.4Z">
+        <fill>
+          <LinearGradient x="-0.075" y="0" scaleX="28.45">
+            <GradientEntry ratio="0" color="#FFFFFF"/>
+            <GradientEntry ratio="1"/>
+          </LinearGradient>
+        </fill>
+      </Path>
+    </Group>
+  </Group>
+  <Private>
+      <xfl:PrivateElement d:ref="#1" xmlns:xfl="http://ns.adobe.com/xfl/2008/">
+        <xfl:publishSettings xfl:source=""/>
+        <xfl:mobileSettings xfl:source=""/>
+        <xfl:as3ExportItems/>
+      </xfl:PrivateElement>
+    </Private>
+  </Graphic>

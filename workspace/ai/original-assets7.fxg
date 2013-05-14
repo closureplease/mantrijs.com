@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Graphic version="2.0" viewHeight="500" viewWidth="600" ATE:version="1.0.0" flm:version="1.0.0" d:id="1" d:using="" xmlns="http://ns.adobe.com/fxg/2008" xmlns:ATE="http://ns.adobe.com/ate/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:flm="http://ns.adobe.com/flame/2008">
+  <Library/>
+  <Group blendMode="normal" d:type="layer" d:userLabel="Layer 1">
+    <Path scaleX="0.76318359" scaleY="0.76318359" x="111.65" y="104.65" flm:isDrawingObject="false" data="M-139.65 -139.65 -131.6 -134.65 -142 -134.65 -150.45 -126.2 -150.45 -133.7 -160.95 -135.75 -155.3 -139.5 -155.3 -148.1 -146 -144.2 -137.85 -147.65Z">
+      <fill>
+        <SolidColor color="#CCCCCC"/>
+      </fill>
+    </Path>
+  </Group>
+  <Private>
+      <xfl:PrivateElement d:ref="#1" xmlns:xfl="http://ns.adobe.com/xfl/2008/">
+        <xfl:publishSettings xfl:source=""/>
+        <xfl:mobileSettings xfl:source=""/>
+        <xfl:as3ExportItems/>
+      </xfl:PrivateElement>
+    </Private>
+  </Graphic>
