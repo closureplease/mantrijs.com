@@ -1,39 +1,37 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>The Configuration File - Mantri: Javascript Dependency System</title><link rel="stylesheet" href="/css/main.css"><link href="http://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css"><link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"><!-- link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')--><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-api page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container the-configuration-file"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1>The Configuration File</h1><p>The <code>mantriConf.json</code> file is where you declare your vendor depedencies, build directives and more.</p>
-<h2><a class="anchor" href="#show-me" name="show-me">Show Me!</a></h2>
-<p>The full configuration with default values.</p>
-<pre><code class="lang-json">{
-  <span class="string">"baseUrl"</span>: <span class="string">"js/"</span>,
-  <span class="string">"libs"</span>: {},
-
-  <span class="string">"deps"</span>: {
-    <span class="string">"src"</span>: <span class="string">"js/"</span>,
-    <span class="string">"root"</span>: <span class="string">"./"</span>,
-    <span class="string">"dest"</span>: <span class="string">"deps.js"</span>
-  },
-
-  <span class="string">"build"</span>: {
-    <span class="string">"input"</span>: <span class="string">"js/app.js"</span>,
-    <span class="string">"dest"</span>: <span class="string">"dist/app.min.js"</span>,
-    <span class="string">"outputWrapper"</span>: <span class="string">""</span>,
-    <span class="string">"exclude"</span>: [<span class="string">""</span>]
-  }
-}</code></pre>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>The Configuration File - Mantri: Javascript Dependency System</title><link rel="stylesheet" href="/css/main.css"><link href="http://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css"><link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"><!-- link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')--><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-api page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container the-configuration-file"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1>The Configuration File</h1><p><code>mantriConf.json</code> is the main Mantri configuration file. From this file you control every functionality and option of the Mantri building workflow.</p>
 <h2><a class="anchor" href="#not-for-production" name="not-for-production">Not For Production!</a></h2>
-<p>The <code>mantriConf.json</code> file should not exist in your production environment. So make sure you remove it at deployment. To define another location for the file use the <code>data-config</code> attribute in the <code>&lt;script&gt;</code> element:</p>
+<p>The <code>mantriConf.json</code> file should not exist in your production environment. Make sure you remove it at deployment. To define another location for the file use the <code>data-config</code> attribute in the <code>&lt;script&gt;</code> element:</p>
 <pre><code class="lang-html">&lt;script data-config=<span class="string">"js/config/mantriConf.json"</span> src=<span class="string">"js/libs/mantri.web.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></code></pre>
-<h2><a class="anchor" href="#options" name="options">Options</a></h2>
-<h3><a class="anchor" href="#baseurl" name="baseurl">baseUrl</a></h3>
-<p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: current directory</p>
-<p>The base url path relative to your document root.</p>
+<h2><a class="anchor" href="#general-options" name="general-options">General Options</a></h2>
+<h3><a class="anchor" href="#jsroot" name="jsroot">jsRoot</a></h3>
+<p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: Directory of <code>mantriConf.json</code> file.</p>
+<p>The base folder of your Javascript application, relative to your Document Root.</p>
 <h4><a class="anchor" href="#absolute-paths" name="absolute-paths">Absolute Paths</a></h4>
-<p>For cases where you need absolute paths feel free to use <code>/</code></p>
-<p>Using <code>./</code> means literally the current path. Helps if your application lives under a folder.</p>
-<h3><a class="anchor" href="#libs" name="libs">libs</a></h3>
+<p>For cases where you need absolute paths feel free to use <code>/</code>. Using <code>./</code> means literally the current path. Helps if your application lives under a folder.</p>
+<blockquote>
+<p><strong>Deprecation Notice</strong>: This used to be the <code>baseUrl</code> option key. Since v0.2.0 it has been deprecated and in v0.3.0 the <code>baseUrl</code> key will be permanently removed.</p>
+</blockquote>
+<h3><a class="anchor" href="#documentroot" name="documentroot">documentRoot</a></h3>
+<p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: Directory of <code>mantriConf.json</code> file.</p>
+<p>Defines the base folder of your website. If the <code>mantriConf.json</code> file is not in your website&#39;s root folder, then you have to define this option!</p>
+<h3><a class="anchor" href="#vendorlibs" name="vendorlibs">vendorLibs</a></h3>
 <p><strong>Type</strong>: <code>Object</code> <strong>Default</strong>: None</p>
 <p>Define all your third-party dependencies in this object. the key of the object is the lib&#39;s id and the value is the path to the file.</p>
+<p>Example:</p>
+<pre><code class="lang-json">{
+  vendorLibs: {
+    <span class="string">"jquery"</span>: <span class="string">"vendor/jquery.min"</span>,
+    <span class="string">"handlebars"</span>: <span class="string">"vendor/handlebars.min"</span>,
+    <span class="string">"ember"</span>: <span class="string">"vendor/ember-latest.min"</span>
+  }
+}</code></pre>
+<p>The path will get concatenated with the path from <code>jsRoot</code>, so from the example above, if <code>jsRoot</code> was set to <code>js</code> jquery would be looked up in <code>js/vendor/jquery.min.js</code>. Feel free to use <code>../</code> if you need to escape that.</p>
 <blockquote>
-<p>The key used to id the lib does not carry any significance beyond the config file itself.</p>
+<p><strong>Insight</strong>: The key used to id the lib can be used by the <code>build.excludeVendor</code> option to exclude a lib from the final built bundle.</p>
+<p><strong>Deprecation Notice</strong>: This used to be the <code>lib</code> option key. Since v0.2.0 it has been deprecated and in v0.3.0 the <code>lib</code> key will be permanently removed.</p>
 </blockquote>
+<h2><a class="anchor" href="#the-dependency-task-options" name="the-dependency-task-options">The Dependency Task Options</a></h2>
+<p>The dependency task calculates your dependency tree and produces the <code>deps.js</code> file which is required in development by Mantri. All dependency options are nested under the <code>deps</code> master key.</p>
 <h3><a class="anchor" href="#deps.src" name="deps.src">deps.src</a></h3>
 <p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: <code>./</code></p>
 <p>The source to scan for <code>goog.provide</code> and <code>goog.require</code> statements, essentialy the path to your web application.</p>
@@ -47,24 +45,89 @@
 <h3><a class="anchor" href="#deps.dest" name="deps.dest">deps.dest</a></h3>
 <p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: <code>deps.js</code></p>
 <p>The file you wish the generated deps file to be saved at.</p>
-<h3><a class="anchor" href="#build.input" name="build.input">build.input</a></h3>
+<h2><a class="anchor" href="#the-build-task-options" name="the-build-task-options">The Build Task Options</a></h2>
+<p>All build option paths should be relative to where your package root folder is (i.e. where your <code>package.json</code> file is).</p>
+<h3><a class="anchor" href="#build.src" name="build.src">build.src</a></h3>
 <p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: <strong>Required</strong></p>
-<p>Define the path and filename to your main file that bootstraps your application. The path should be relative to where the <code>Gruntfile.js</code> is. The filename should include the <code>.js</code> extension.</p>
+<p>Define the location of the application bootstrap file. The filename should include the <code>.js</code> extension.</p>
+<blockquote>
+<p><strong>Deprecation Notice</strong>: This used to be the <code>build.input</code> option key. Since v0.2.0 it has been deprecated and in v0.3.0 the <code>build.input</code> key will be permanently removed.</p>
+</blockquote>
 <h3><a class="anchor" href="#build.dest" name="build.dest">build.dest</a></h3>
 <p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: <code>app.min.js</code></p>
 <p>Define the destination output file.</p>
 <h3><a class="anchor" href="#build.outputwrapper" name="build.outputwrapper">build.outputWrapper</a></h3>
-<p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: none</p>
-<p>Define a wrapping string for your build application. Use the keyword <code>&lt;%=output%&gt;</code> to position the contents of your app:</p>
+<p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: None</p>
+<p>Define a wrapping string for your build application. Use the keyword <code>%output%</code> to position the content of your app:</p>
 <pre><code class="lang-json"><span class="string">"build"</span>: {
-  <span class="string">"outputWrapper"</span>: <span class="string">"(function(){&lt;%=output%&gt;}).call(this);"</span>
+  <span class="string">"outputWrapper"</span>: <span class="string">"(function(){%output%}).call(this);"</span>
 }</code></pre>
-<p>This will wrap your application in an IIFE invoked using the Global context. The string passed to the <code>outputWrapper</code> option will be evaluated using <a href="http://underscorejs.org/#template" title="Underscore template function">Underscore&#39;s template method</a>.</p>
-<h3><a class="anchor" href="#build.exclude" name="build.exclude">build.exclude</a></h3>
+<p>This will wrap your application in an IIFE, which will be self invoked using the Global context.</p>
+<p>The string passed to the <code>outputWrapper</code> option will be evaluated using <a href="https://code.google.com/p/closure-compiler/wiki/FAQ#When_using_Advanced_Optimizations,_Closure_Compiler_adds_new_var">Google Closure&#39;s native <code>output-wrapper</code> format</a>.</p>
+<h3><a class="anchor" href="#build.excludevendor" name="build.excludevendor">build.excludeVendor</a></h3>
 <p><strong>Type</strong>: <code>Array</code> of strings <strong>Default</strong>: None</p>
 <p>Define the libraries that you want to exclude from bundling. This is useful when you want to load popular libraries from public CDN hosts.</p>
-<p>Use the <strong>key</strong> part of the <code>libs</code> hash to refer to libs you want excluded.</p>
-</div></div><div class="span3"><div class="well sidebar-nav"><ul class="nav nav-list"><li class="nav-header"><span>Web API</span></li><li><a href="/api/the-script-element">The Script Element</a></li><li><a href="/api/goog-provide-and-require">goog provide and require</a></li><li><a href="/api/the-configuration-file" class="active">The Configuration File</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>The CLI</span></li><li><a href="/api/the-cli">The CLI</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Grunt Tasks</span></li><li><a href="/api/mantri-as-a-grunt-plugin">Mantri As a Grunt Plugin</a></li><li><a href="/api/grunt-task-mantrideps">Grunt Task mantriDeps</a></li><li><a href="/api/grunt-task-mantribuild">Grunt Task mantriBuild</a></li></ul></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><iframe src="http://ghbtns.com/github-btn.html?user=closureplease&amp;repo=mantri&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="94" height="20"></iframe><iframe url="http://mantrijs.com" text="zit" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fmantrijs.com&amp;text=Check%20out%20Mantri%2C%20Javascript%20Dependency%20System%20extraordinaire&amp;hashtags=mantrijs" style="width:130px; height:20px;"></iframe><!--a(href='https://github.com/closureplease/mantri', alt='Mantri on GitHub')--><!--span Mantri on GitHub &nbsp;--><!--span.icon-github--></li></ul><ul class="pull-left"><li>This site was built using the <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">source, images and copy</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li><li>The rest (c) 2013 <a href="http://thanpol.as" alt="Thanasis Polychronakis Website">Thanasis Polychronakis</a> Licensed under the <a href="https://github.com/closureplease/mantri/blob/master/LICENSE-MIT" alt="MIT LICENSE">MIT</a>.</li></ul></div></div></footer><script>var LIVE = !!window.location.origin.match(/mantrijs/);
+<p>Use the <strong>key</strong> part of the <code>vendorLibs</code> map to refer to vendor libs you want excluded.</p>
+<blockquote>
+<p><strong>Deprecation Notice</strong>: This used to be the <code>build.exclude</code> option key. Since v0.2.0 it has been deprecated and in v0.3.0 the <code>build.exclude</code> key will be permanently removed.</p>
+</blockquote>
+<h3><a class="anchor" href="#build.sourcemapfile" name="build.sourcemapfile">build.sourceMapFile</a></h3>
+<p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: None</p>
+<p>Set the location to store the sourcemap of the build output. <a href="/api/sourcemaps-on-mantri">Read more about working with Source Maps on Mantri</a>.</p>
+<h3><a class="anchor" href="#build.sourcemapurl" name="build.sourcemapurl">build.sourceMapUrl</a></h3>
+<p><strong>Type</strong>: <code>string</code> <strong>Default</strong>: None</p>
+<p>Set where the browser should expect to find the sourceMap file. <a href="/api/sourcemaps-on-mantri">Read more about working with Source Maps on Mantri</a>.</p>
+<h2><a class="anchor" href="#building-multiple-modules" name="building-multiple-modules">Building Multiple Modules</a></h2>
+<h3><a class="anchor" href="#buildmodules" name="buildmodules">buildModules</a></h3>
+<p><strong>Type</strong>: <code>Object</code> <strong>Default</strong>: None</p>
+<p>Mantri allows building multiple modules in case you need to lazy load your JS assets. The key to set this up is <code>buildModules</code> and it&#39;s a map of configs for each module to build:</p>
+<pre><code class="lang-json">buildModules: {
+    <span class="string">"app.moduleA"</span>: {
+      <span class="string">"dest"</span>: <span class="string">"dist/app-module-A.min.js"</span>,
+      <span class="string">"sourceMapFile"</span>: <span class="string">"dist/app-module-A.min.js.map"</span>,
+      <span class="string">"sourceMappingURL"</span>: <span class="string">"/dist/app-module-A.min.js.map"</span>
+    },
+    <span class="string">"app.moduleB"</span>: {
+      <span class="string">"dest"</span>: <span class="string">"dist/app-module-B.min.js"</span>,
+      <span class="string">"sourceMapFile"</span>: <span class="string">"dist/app-module-B.min.js.map"</span>,
+      <span class="string">"sourceMappingURL"</span>: <span class="string">"/dist/app-module-B.min.js.map"</span>
+    }
+}</code></pre>
+<p>The key in an actual reference to the Module&#39;s namespace. Each module Object can have the following keys:</p>
+<ul>
+<li><code>dest</code> <strong>Type</strong>: <code>string</code> <strong>Default</strong>: <strong>Required</strong> :: Where to save the compiled output.</li>
+<li><code>sourceMapFile</code> <strong>Type</strong>: <code>string</code> <strong>Default</strong>: None :: Optionally set where to save the sourcemap file.</li>
+<li><code>sourceMapURL</code> <strong>Type</strong>: <code>string</code> <strong>Default</strong>: None :: Optionally set where your browser should look for the sourceMap file.</li>
+<li><code>outputWrapper</code> <strong>Type</strong>: <code>string</code> <strong>Default</strong>: None :: Do not use this unless you know what you are doing, needs to properly export symbols.</li>
+</ul>
+<p>Multiple builds is a very advanced topic, <a href="/api/building-multiple-modules">read more about how to implement it</a>.</p>
+<h2><a class="anchor" href="#mantriconf.json-examples" name="mantriconf.json-examples">mantriConf.json Examples</a></h2>
+<p>A typical configuration file:</p>
+<pre><code class="lang-json">{
+  <span class="string">"baseUrl"</span>: <span class="string">"js/"</span>,
+  <span class="string">"vendorLibs"</span>: {
+    <span class="string">"jquery"</span>: <span class="string">"vendor/jquery.latest"</span>,
+    <span class="string">"handlebars"</span>: <span class="string">"vendor/handlebars.min"</span>
+  },
+
+  <span class="string">"deps"</span>: {
+    <span class="string">"src"</span>: <span class="string">"js/"</span>,
+    <span class="string">"root"</span>: <span class="string">"./"</span>,
+    <span class="string">"dest"</span>: <span class="string">"deps.js"</span>
+  },
+
+  <span class="string">"build"</span>: {
+    <span class="string">"src"</span>: <span class="string">"js/app.js"</span>,
+    <span class="string">"dest"</span>: <span class="string">"dist/app.min.js"</span>,
+    <span class="string">"outputWrapper"</span>: <span class="string">"(function(){var BUILD=true;%output}).call(this)"</span>,
+    <span class="string">"excludeVendor"</span>: [
+      <span class="string">"jquery"</span>
+    ],
+    <span class="string">"sourceMapFile"</span>: <span class="string">"dist/app.min.js.map"</span>,
+    <span class="string">"sourceMappingURL"</span>: <span class="string">"/dist/app.min.js.map"</span>
+  }
+}</code></pre>
+</div></div><div class="span3"><div class="well sidebar-nav"><ul class="nav nav-list"><li class="nav-header"><span>Web API</span></li><li><a href="/api/the-script-element">The Script Element</a></li><li><a href="/api/goog-provide-and-require">goog provide and require</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Building</span></li><li><a href="/api/the-configuration-file" class="active">The Configuration File</a></li><li><a href="/api/building-multiple-modules">Building Multiple Modules</a></li><li><a href="/api/sourcemaps-on-mantri">SourceMaps on Mantri</a></li><li><a href="/api/the-cli">The CLI</a></li><li><a href="/api/migrating-from-0.1.x-to-0.2.x">Migrating from 0.1.x to 0.2.x</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Grunt Tasks</span></li><li><a href="/api/mantri-as-a-grunt-plugin">Mantri As a Grunt Plugin</a></li><li><a href="/api/grunt-task-mantrideps">Grunt Task mantriDeps</a></li><li><a href="/api/grunt-task-mantribuild">Grunt Task mantriBuild</a></li></ul></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><iframe src="http://ghbtns.com/github-btn.html?user=closureplease&amp;repo=mantri&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="94" height="20"></iframe><iframe url="http://mantrijs.com" text="zit" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fmantrijs.com&amp;text=Check%20out%20Mantri%2C%20Javascript%20Dependency%20System%20extraordinaire&amp;hashtags=mantrijs" style="width:130px; height:20px;"></iframe><!--a(href='https://github.com/closureplease/mantri', alt='Mantri on GitHub')--><!--span Mantri on GitHub &nbsp;--><!--span.icon-github--></li></ul><ul class="pull-left"><li>This site was built using the <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">source, images and copy</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li><li>The rest (c) 2013 <a href="http://thanpol.as" alt="Thanasis Polychronakis Website">Thanasis Polychronakis</a> Licensed under the <a href="https://github.com/closureplease/mantri/blob/master/LICENSE-MIT" alt="MIT LICENSE">MIT</a>.</li></ul></div></div></footer><script>var LIVE = !!window.location.origin.match(/mantrijs/);
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

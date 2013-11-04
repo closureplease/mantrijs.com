@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Building Multiple Modules - Mantri: Javascript Dependency System</title><link rel="stylesheet" href="/css/main.css"><link href="http://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css"><link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"><!-- link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')--><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-api page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container building-multiple-modules"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1>Building Multiple Modules</h1><h2><a class="anchor" href="#developing-modular-applications-with-mantri" name="developing-modular-applications-with-mantri">Developing Modular Applications with Mantri</a></h2>
+<p>Mantri enables you to break up your code in multiple modules that you can lazy-load on-demand on your visitor&#39;s browser. To get more into the spirit and terminology of <a href="http://thanpol.as/javascript/writing-modular-javascript-rewind/" title="Writing Modular Javascript REWIND by Thanasis Polychronakis">Modular Applications, check out this blog post by the Mantri Author</a>. Beware, building multiple modules is an advanced and very engaged process. That said, Mantri does it&#39;s best to smooth it out for you.</p>
+<h3><a class="anchor" href="#terminology" name="terminology">Terminology</a></h3>
+<p>A few terms that are used throughout the document need to be explained.</p>
+<ul>
+<li><strong>Built-Module</strong> The compiled (minified) output of a Module. Your core / base file is also considered a <em>Module</em> and has a <em>Built-Module</em>.</li>
+<li><strong>Static Linking</strong> With Static Linking every Built-Module contains the core stack and helping libraries.</li>
+<li><strong>Dynamic Linking</strong> With Dynamic Linking, every Built-Module does not contain the core stack or any helping libraries.</li>
+</ul>
+<h3><a class="anchor" href="#getting-started" name="getting-started">Getting Started</a></h3>
+<p>To create multiple <em>Built-Modules</em> you will need Multiple <strong>bootstrap files</strong>. Each bootstrap file would represent a single module you want to build &amp; publish.</p>
+<p>Depending on your usecase, if you are authoring a library or an end-user application, you would either need to apply the <a href="http://thanpol.as/javascript/writing-modular-javascript-rewind/#static_linking" title="Static Linking Built-Modules - Writing Modular Javascript REWIND by Thanasis Polychronakis"><em>Static</em></a> or <a href="http://thanpol.as/javascript/writing-modular-javascript-rewind/#dynamic_linking" title="Dynamic Linking Built-Modules - Writing Modular Javascript REWIND by Thanasis Polychronakis"><em>Dynamic</em></a> linking pattern.</p>
+<p>Typically if you are authoring a library you&#39;d need <em>Static Linking</em>, which allows you to include the <em>Core</em> and dependencies in the Built-Modules. And if you are creating an end-user application you&#39;d need <em>Dynamic Linking</em> which dictates that every built-module only includes it&#39;s own source and nothing else.</p>
+<h3><a class="anchor" href="#the-scenario" name="the-scenario">The Scenario</a></h3>
+<p>In our scenario we will explore the <em>Dynamic Linking</em> pattern. Suppose we have a very large code-base and we want to split it in half so we can achieve optimized page loads. These two parts are the <em>Core</em> and <em>ModuleA</em>. The ModuleA&#39;s Built-Module should not have any overlapping code with the Core, so we have to apply the Dynamic Linking pattern.</p>
+<p>Let&#39;s examine how to construct the two bootstrap files that represent the two modules (<em>Core</em> and <em>ModuleA</em>).</p>
+<h3><a class="anchor" href="#multiple-bootstrap-files" name="multiple-bootstrap-files">Multiple Bootstrap Files</a></h3>
+<p>The idea behind multiple bootstrap files is pretty simple, create a file that will sufficiently guide Mantri to discover all the needed dependencies and bundle them into Built-Modules. In our scenario, the <em>Core</em> Module obviously loads first and <em>ModuleA</em> will load at a later time. That means that <em>Core&#39;s</em> source will have already been fetched and evaluated by the browser so it does not need to be included in <em>ModuleA</em>. This is a very important concept that needs to be understood and applied throughout the codebase.</p>
+<p>As counter-intuitive as it sounds, you should not have a <code>goog.require()</code> statement within <em>ModuleA</em> that requires any part of code that will be included in the <em>Core</em> Built-Module. If such a require statement exists, it will instruct Mantri to include that file in the ModuleA&#39;s Build-Module output and result in code overlap between the <em>Core</em> and <em>ModuleA</em>.</p>
+<p>This is what the two bootstrap files should look like:</p>
+<h5><a class="anchor" href="#js-core.js" name="js-core.js">/js/core.js</a></h5>
+<pre><code class="lang-js"><span class="comment">// bootstrap file for just the App's Core.</span>
+goog.provide(<span class="string">'app'</span>);
+
+<span class="comment">// generic helper functions</span>
+goog.require(<span class="string">'app.util'</span>);
+
+<span class="comment">// our applications core</span>
+goog.require(<span class="string">'app.router'</span>);
+goog.require(<span class="string">'app.xhr'</span>);
+goog.require(<span class="string">'app.ui'</span>);</code></pre>
+<h5><a class="anchor" href="#js-modulea.js" name="js-modulea.js">/js/moduleA.js</a></h5>
+<pre><code class="lang-js"><span class="comment">// bootstrap file for ModuleA.</span>
+goog.provide(<span class="string">'app.moduleA'</span>);
+
+<span class="comment">// As a stand-alone dynamically linked module,</span>
+<span class="comment">// we do not require 'app.util' or 'app.core' on purpose.</span>
+<span class="comment">// They have already been fetched in core and are available</span>
+<span class="comment">// in the global namespace.</span>
+app.util.log(<span class="string">'app.moduleA Kicking in!'</span>);
+
+<span class="comment">// require the moduleA's modules...</span>
+goog.require(<span class="string">'app.dothis'</span>);
+goog.require(<span class="string">'app.dothat'</span>);</code></pre>
+<h3><a class="anchor" href="#configuring-mantri-to-build-multiple-modules" name="configuring-mantri-to-build-multiple-modules">Configuring Mantri to Build Multiple Modules</a></h3>
+<p>Multiple Modules can be built in Mantri by using the key <code>buildModules</code> in your <code>mantriConf.json</code> file.</p>
+<pre><code class="lang-json">{
+  <span class="string">"buildModules"</span>: {
+    <span class="string">"app.moduleA"</span>: {
+      <span class="string">"dest"</span>: <span class="string">"dist/app-module-A.min.js"</span>
+    }
+  }
+}</code></pre>
+<p>You can define as many Modules as you like. The key <code>app.moduleA</code> is directly referencing the namespace of ModuleA that we use in our scenario. You should replace that with the exact value that you define in the <code>goog.provide()</code> statement of your module&#39;s bootstrap file.</p>
+<p>Each module Object in mantriConf.json can have the following keys:</p>
+<ul>
+<li><code>dest</code> <strong>Type</strong>: <code>string</code> <strong>Default</strong>: <strong>Required</strong> :: Where to save the compiled output.</li>
+<li><code>sourceMapFile</code> <strong>Type</strong>: <code>string</code> <strong>Default</strong>: None :: Optionally set where to save the sourcemap file.</li>
+<li><code>sourceMapURL</code> <strong>Type</strong>: <code>string</code> <strong>Default</strong>: None :: Optionally set where your browser should look for the sourceMap file.</li>
+<li><code>outputWrapper</code> <strong>Type</strong>: <code>string</code> <strong>Default</strong>: None :: Do not use this unless you know what you are doing, needs to properly export symbols. Read more about this next on &quot;Exporting Symbols from Built-Modules&quot;.</li>
+</ul>
+<h3><a class="anchor" href="#exporting-symbols-from-built-modules" name="exporting-symbols-from-built-modules">Exporting Symbols from Built-Modules</a></h3>
+<p>Mantri uses the <a href="https://code.google.com/p/closure-compiler">Google Closure Compiler (GCC)</a> to produce the Built-Modules. As much as this helps in optimizing the codebase it also poses a few obstacles.</p>
+<p>Suppose that a Module uses the same top-level namespace as your Core module. Like it happens in our scenario, <code>app.moduleA</code> uses the same top-level namespace <code>app</code> as the Core module does <code>app.core</code>. This will result in the produced Built-Module to overwrite the core. This happens because of the way GCC, <em>rightly so</em>, bootstraps your Built-Module.</p>
+<p>This is the compiled output of GCC, the Built-Module, in pretty format:</p>
+<pre><code class="lang-js"><span class="keyword">var</span> goog = goog || {};
+<span class="keyword">var</span> app = {
+  moduleA:{
+    dothis: {},
+    dothat: {}
+  }
+};
+app.moduleA.dothis.run = <span class="keyword">function</span>(){};
+
+<span class="comment">/* ... */</span></code></pre>
+<p>As you can see, the key <code>app</code> is defined in the global namespace, this results in overwriting any previously defined <code>app</code> keys. This will effectively wipe out of memory the Core Module. Or every other module that was fetched and evaluated before this one.</p>
+<p>To overcome this problem Mantri will wrap your Built-Module in an <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">Immediately-Invoked Function Expression (IIFE)</a> and properly export the root of the Module&#39;s namespace. In our example that is <code>app.moduleA</code> so the used <code>outputWrapper</code> would look like this, in pretty print with comments:</p>
+<pre><code class="lang-js">;(<span class="keyword">function</span>(){
+
+  <span class="comment">// this is where the Built-Module will get appended</span>
+  <span class="comment">// %output%;</span>
+
+  <span class="comment">// "this" in this context refers to the global "window" object.</span>
+  <span class="keyword">this</span>.app = <span class="keyword">this</span>.app || {};
+
+  <span class="comment">// "app.moduleA" refers to the local symbol in the IFFE closure,</span>
+  <span class="comment">// which had been defined above in the %output% placeholder.</span>
+  <span class="keyword">this</span>.app.moduleA = app.moduleA;
+}).call(<span class="keyword">this</span>);</code></pre>
+<p>There can be more optimal ways of exporting symbols from Built-Modules but this is the bare-bones implementation that Mantri offers.</p>
+<p>Mantri allows you to override this wrapper by defining your own using the <code>outputWrapper</code> key. Alternatively you can turn of wrapping altogether by setting a value of <code>null</code> to the <code>outputWrapper</code> key.</p>
+<pre><code class="lang-json">{
+  <span class="string">"buildModules"</span>: {
+    <span class="string">"app.moduleA"</span>: {
+      <span class="string">"dest"</span>: <span class="string">"dist/app-module-A.min.js"</span>,
+      <span class="string">"outputWrapper"</span>: <span class="string">"(function(global){%output%;global.something=app.moduleA;})(window)"</span>
+    },
+    <span class="string">"app.moduleB"</span>: {
+      <span class="string">"dest"</span>: <span class="string">"dist/app-module-B.min.js"</span>,
+      <span class="string">"outputWrapper"</span>: <span class="literal">null</span>
+    }
+  }
+}</code></pre>
+<h2><a class="anchor" href="#building-multiple-modules" name="building-multiple-modules">Building Multiple Modules</a></h2>
+<p>Nothing new here, build like you always build, either from <a href="/api/the-cli" title="The CLI">the CLI</a> <code>mantri build</code> or as a <a href="/api/grunt-task-mantribuild" title="Grunt Task mantriBuild">grunt plugin</a> <code>grunt mantriBuild</code>.</p>
+<h2><a class="anchor" href="#loading-modules" name="loading-modules">Loading Modules</a></h2>
+<p>Built-Module Loaders (aka Module Loaders) is beyond the scope of Mantri. This is one of the fine points where Mantri differs from RequireJS and other <em>Module Loaders</em>:</p>
+<blockquote>
+<p><em>Built-Module</em> Loading is a different concept than Dependency Management</p>
+</blockquote>
+<p>There are <a href="http://headjs.com/" title="Module Loader headjs">several</a> <a href="http://yepnopejs.com/" title="Module Loader yepnopejs">lightweight</a> <a href="https://github.com/rgrove/lazyload" title="Module Loader LazyLoad"><em>Module</em></a> <a href="http://malko.github.io/l.js/" title="Module Loader l.js"><em>Loaders</em></a> you can use, or you can create your own; using XHR with less than 10 lines of code.</p>
+<h2><a class="anchor" href="#multiple-module-shortcomings" name="multiple-module-shortcomings">Multiple Module Shortcomings</a></h2>
+<p>The current implementation of multiple modules requires that all the separate modules are pre-build before they can be fetched by the core when <strong>on development</strong>.</p>
+<p>To implement such a workflow requires a build-step for each modification that happens in any of the modules. While this flow can easily be implemented with nowdays automation tools, it is far from optimal.</p>
+<p>To solve this issue and enable single file fetching for all multiple modules the <code>goog.provide</code> and <code>goog.require</code> functions would need to be enhanced. If you need this enhancement then please <a href="https://github.com/closureplease/mantri/issues/15">let me know</a>.</p>
+<h2><a class="anchor" href="#example" name="example">Example</a></h2>
+<p>You can checkout a full example using the classic ToDo MVC app in the <a href="https://github.com/closureplease/todoAppMantri/tree/multi-modules">multi-module branch of the todoAppMantri repository</a>.</p>
+</div></div><div class="span3"><div class="well sidebar-nav"><ul class="nav nav-list"><li class="nav-header"><span>Web API</span></li><li><a href="/api/the-script-element">The Script Element</a></li><li><a href="/api/goog-provide-and-require">goog provide and require</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Building</span></li><li><a href="/api/the-configuration-file">The Configuration File</a></li><li><a href="/api/building-multiple-modules" class="active">Building Multiple Modules</a></li><li><a href="/api/sourcemaps-on-mantri">SourceMaps on Mantri</a></li><li><a href="/api/the-cli">The CLI</a></li><li><a href="/api/migrating-from-0.1.x-to-0.2.x">Migrating from 0.1.x to 0.2.x</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Grunt Tasks</span></li><li><a href="/api/mantri-as-a-grunt-plugin">Mantri As a Grunt Plugin</a></li><li><a href="/api/grunt-task-mantrideps">Grunt Task mantriDeps</a></li><li><a href="/api/grunt-task-mantribuild">Grunt Task mantriBuild</a></li></ul></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><iframe src="http://ghbtns.com/github-btn.html?user=closureplease&amp;repo=mantri&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="94" height="20"></iframe><iframe url="http://mantrijs.com" text="zit" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fmantrijs.com&amp;text=Check%20out%20Mantri%2C%20Javascript%20Dependency%20System%20extraordinaire&amp;hashtags=mantrijs" style="width:130px; height:20px;"></iframe><!--a(href='https://github.com/closureplease/mantri', alt='Mantri on GitHub')--><!--span Mantri on GitHub &nbsp;--><!--span.icon-github--></li></ul><ul class="pull-left"><li>This site was built using the <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">source, images and copy</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li><li>The rest (c) 2013 <a href="http://thanpol.as" alt="Thanasis Polychronakis Website">Thanasis Polychronakis</a> Licensed under the <a href="https://github.com/closureplease/mantri/blob/master/LICENSE-MIT" alt="MIT LICENSE">MIT</a>.</li></ul></div></div></footer><script>var LIVE = !!window.location.origin.match(/mantrijs/);
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', (LIVE ? 'UA-16398858-9' : 'xxxx'), 'mantrijs.com');
+ga('send', 'pageview');</script></body></html>

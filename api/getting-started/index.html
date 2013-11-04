@@ -4,7 +4,7 @@
 <li><strong>mantri</strong> The main library that contains the build process and web components.</li>
 <li><strong>mantri-cli</strong> The command line tool to interface with Mantri.</li>
 </ul>
-<p>Mantri is also available as a <a href="http://gruntjs.com/">Grunt</a> plugin, however it is advised to install the command line tool for convenience.</p>
+<p>Mantri is also available as a <a href="http://gruntjs.com/">Grunt</a> plugin, if you are not familiar with Grunt you better use the command line tool for convenience.</p>
 <h2><a class="anchor" href="#installing-the-cli" name="installing-the-cli">Installing the CLI</a></h2>
 <p>In order to get started, you&#39;ll want to install Mantri&#39;s command line interface (CLI) globally. You may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as Administrator (for Windows) to do this.</p>
 <pre><code class="lang-shell">npm install -g mantri-cli</code></pre>
@@ -45,8 +45,8 @@ goog.require(<span class="string">'myApp.helpers'</span>);</code></pre>
 <p>The type of the file is JSON, therefore no comments or funny stuff, think <code>package.json</code>.</p>
 <p>This is a sample mantriConf file:</p>
 <pre><code class="lang-json">{
-  <span class="string">"baseUrl"</span>: <span class="string">"js/"</span>,
-  <span class="string">"libs"</span>: {
+  <span class="string">"jsRoot"</span>: <span class="string">"js/"</span>,
+  <span class="string">"vendorLibs"</span>: {
     <span class="string">"jquery"</span>: <span class="string">"../assets/jquery.min"</span>,
     <span class="string">"handlebars"</span>: <span class="string">"../assets/handlebars.min"</span>,
     <span class="string">"ember"</span>: <span class="string">"lib/ember-latest.min"</span>
@@ -59,32 +59,31 @@ goog.require(<span class="string">'myApp.helpers'</span>);</code></pre>
   },
 
   <span class="string">"build"</span>: {
-    <span class="string">"input"</span>: <span class="string">"js/app.js"</span>,
+    <span class="string">"src"</span>: <span class="string">"js/app.js"</span>,
     <span class="string">"dest"</span>: <span class="string">"dist/app.min.js"</span>,
-    <span class="string">"outputWrapper"</span>: <span class="string">"(function(){&lt;%=output%&gt;}).call(this);"</span>,
-    <span class="string">"exclude"</span>: [<span class="string">"jquery"</span>]
+    <span class="string">"outputWrapper"</span>: <span class="string">"(function(){%output%}).call(this);"</span>,
+    <span class="string">"excludeVendor"</span>: [<span class="string">"jquery"</span>]
   }
 }</code></pre>
-<p>The <code>build.input</code> option must point to the file that bootstraps your application.</p>
+<p>The <code>build.src</code> option must point to the file that bootstraps your application.</p>
 <h3><a class="anchor" href="#production" name="production">Production</a></h3>
 <p>Building your application is one command line away:</p>
 <pre><code class="lang-shell">mantri build</code></pre>
 <p>This is roughly what happens when build is run:</p>
 <ul>
-<li>Scans your codebase and creates a dependency tree.</li>
 <li>Reads your <a href="/api/the-configuration-file" title="The Mantri configuration file"><code>mantriConf.json</code></a> file and parses the build rules.</li>
-<li>Bundles and Uglifies all the vendor libraries in the order you declared them.</li>
+<li>Scans your codebase and creates a dependency tree.</li>
+<li>Bundles all the vendor libraries in the order you declared them.</li>
 <li>Bundles your application in one file based on the dependency tree.</li>
 <li>Removes all <code>goog.provide()</code> and <code>goog.require()</code> declarations.</li>
 <li>Compiles the whole bundle with the powerful <a href="https://developers.google.com/closure/compiler/" title="The Google Closure Compiler">Closure Compiler</a>.</li>
-<li>Concatenates the minified vendor libs and your minified app.</li>
 <li>Optionally wraps your code in anything you like (<a href="https://github.com/amdjs/amdjs-api/wiki/AMD" title="The Asynchronous Module Definition (AMD) API">AMD</a>, <a href="http://www.commonjs.org/" title="CommonJS Module System">CommonJS</a>, anon function, you name it).</li>
 </ul>
 <h2><a class="anchor" href="#examples" name="examples">Examples</a></h2>
 <p>Clone the classical <a href="https://github.com/closureplease/todoAppMantri" title="todoMVC using Mantri">ToDo MVC Application</a> using the <strong>Mantri</strong> Dependency System:</p>
 <pre><code class="lang-shell">git clone git@github.com:closureplease/todoAppMantri.git</code></pre>
 <p>Launch a static web-server, or type <code>grunt deps</code> and <code>grunt build</code> to see <strong>Mantri</strong> in action.</p>
-</div></div><div class="span3"><div class="well sidebar-nav"><ul class="nav nav-list"><li class="nav-header"><span>Web API</span></li><li><a href="/api/the-script-element">The Script Element</a></li><li><a href="/api/goog-provide-and-require">goog provide and require</a></li><li><a href="/api/the-configuration-file">The Configuration File</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>The CLI</span></li><li><a href="/api/the-cli">The CLI</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Grunt Tasks</span></li><li><a href="/api/mantri-as-a-grunt-plugin">Mantri As a Grunt Plugin</a></li><li><a href="/api/grunt-task-mantrideps">Grunt Task mantriDeps</a></li><li><a href="/api/grunt-task-mantribuild">Grunt Task mantriBuild</a></li></ul></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><iframe src="http://ghbtns.com/github-btn.html?user=closureplease&amp;repo=mantri&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="94" height="20"></iframe><iframe url="http://mantrijs.com" text="zit" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fmantrijs.com&amp;text=Check%20out%20Mantri%2C%20Javascript%20Dependency%20System%20extraordinaire&amp;hashtags=mantrijs" style="width:130px; height:20px;"></iframe><!--a(href='https://github.com/closureplease/mantri', alt='Mantri on GitHub')--><!--span Mantri on GitHub &nbsp;--><!--span.icon-github--></li></ul><ul class="pull-left"><li>This site was built using the <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">source, images and copy</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li><li>The rest (c) 2013 <a href="http://thanpol.as" alt="Thanasis Polychronakis Website">Thanasis Polychronakis</a> Licensed under the <a href="https://github.com/closureplease/mantri/blob/master/LICENSE-MIT" alt="MIT LICENSE">MIT</a>.</li></ul></div></div></footer><script>var LIVE = !!window.location.origin.match(/mantrijs/);
+</div></div><div class="span3"><div class="well sidebar-nav"><ul class="nav nav-list"><li class="nav-header"><span>Web API</span></li><li><a href="/api/the-script-element">The Script Element</a></li><li><a href="/api/goog-provide-and-require">goog provide and require</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Building</span></li><li><a href="/api/the-configuration-file">The Configuration File</a></li><li><a href="/api/building-multiple-modules">Building Multiple Modules</a></li><li><a href="/api/sourcemaps-on-mantri">SourceMaps on Mantri</a></li><li><a href="/api/the-cli">The CLI</a></li><li><a href="/api/migrating-from-0.1.x-to-0.2.x">Migrating from 0.1.x to 0.2.x</a></li></ul><ul class="nav nav-list"><li class="nav-header"><span>Grunt Tasks</span></li><li><a href="/api/mantri-as-a-grunt-plugin">Mantri As a Grunt Plugin</a></li><li><a href="/api/grunt-task-mantrideps">Grunt Task mantriDeps</a></li><li><a href="/api/grunt-task-mantribuild">Grunt Task mantriBuild</a></li></ul></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><iframe src="http://ghbtns.com/github-btn.html?user=closureplease&amp;repo=mantri&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="94" height="20"></iframe><iframe url="http://mantrijs.com" text="zit" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fmantrijs.com&amp;text=Check%20out%20Mantri%2C%20Javascript%20Dependency%20System%20extraordinaire&amp;hashtags=mantrijs" style="width:130px; height:20px;"></iframe><!--a(href='https://github.com/closureplease/mantri', alt='Mantri on GitHub')--><!--span Mantri on GitHub &nbsp;--><!--span.icon-github--></li></ul><ul class="pull-left"><li>This site was built using the <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">source, images and copy</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li><li>The rest (c) 2013 <a href="http://thanpol.as" alt="Thanasis Polychronakis Website">Thanasis Polychronakis</a> Licensed under the <a href="https://github.com/closureplease/mantri/blob/master/LICENSE-MIT" alt="MIT LICENSE">MIT</a>.</li></ul></div></div></footer><script>var LIVE = !!window.location.origin.match(/mantrijs/);
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
