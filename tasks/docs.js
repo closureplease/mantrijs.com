@@ -137,7 +137,7 @@ module.exports = function (grunt) {
 
         // get docs sidebars
         sidebars[0] = getSidebarSection('## The Web API', 'Web API');
-        sidebars[1] = getSidebarSection('## The Command Line Interface', 'The CLI');
+        sidebars[1] = getSidebarSection('## Building your app', 'Building');
         sidebars[2] = getSidebarSection('## Grunt Tasks', 'Grunt Tasks');
 
         names.forEach(function (name) {
