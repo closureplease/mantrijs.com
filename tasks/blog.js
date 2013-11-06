@@ -60,11 +60,12 @@ module.exports = function (grunt) {
     files.forEach(function (file, i) {
 
       var name = names[i],
-        postTitle = name.substring(10, name.length).replace(/-/g, ' '),
+        postTitleRaw = name.substring(10, name.length),
+        postTitle = postTitleRaw.replace(/-/g, ' '),
         postDate = name.substring(0, 10),
-        destName = name.toLowerCase(),
+        destName = postTitleRaw.toLowerCase(),
         src = base + file,
-        dest = 'build/blog/' + destName + '.html';
+        dest = 'build/blog/' + destName + '/index.html';
 
       grunt.file.copy(src, dest, {
         process:function (src) {
@@ -94,31 +95,31 @@ module.exports = function (grunt) {
     var blogTpl = 'src/tmpl/blog.jade';
     var blogOut = jade.compile(grunt.file.read(blogTpl), {filename:blogTpl})({
       page:'blog',
-      title:'The Grunt Blog',
+      title:'The MantriJS Blog',
       content:shortList,
       articleList:articleList
     });
-    grunt.file.write('build/blog.html', blogOut);
+    grunt.file.write('build/blog/index.html', blogOut);
 
     /**
      * Generate the RSS feed
      */
-    grunt.log.ok('Generating rss feed...');
+    // grunt.log.ok('Generating rss feed...');
     // remove anchors from RSS setting
-    marked.setOptions({
-      anchors:false
-    });
-    // generate the feed items with different 'marked' settings
-    shortList.forEach(function (item) {
-      item.rssSrc = marked(item.rawSrc);
-      item.atomId = blog.atomIDnTimeStampChurner(item.url, item.postRawDate);
-    });
-    var rssTpl = 'src/tmpl/rss.jade';
-    var rssOut = jade.compile(grunt.file.read(rssTpl), {filename:rssTpl})({
-      page:'rss',
-      posts:shortList
-    });
-    grunt.file.write('build/atom.xml', rssOut);
+    // marked.setOptions({
+    //   anchors:false
+    // });
+    // // generate the feed items with different 'marked' settings
+    // shortList.forEach(function (item) {
+    //   item.rssSrc = marked(item.rawSrc);
+    //   item.atomId = blog.atomIDnTimeStampChurner(item.url, item.postRawDate);
+    // });
+    // var rssTpl = 'src/tmpl/rss.jade';
+    // var rssOut = jade.compile(grunt.file.read(rssTpl), {filename:rssTpl})({
+    //   page:'rss',
+    //   posts:shortList
+    // });
+    // grunt.file.write('build/atom.xml', rssOut);
 
     /**
      * Generate the front page
