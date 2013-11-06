@@ -24,13 +24,13 @@
 <li><p>Define the location of the closure library in your <code>mantriConf.json</code> file:</p>
 </li>
 </ol>
-<pre><code>    {
-        <span class="string">"closureLibrary"</span>: <span class="string">"closure-library/"</span>
-    }</code></pre>
+<pre><code class="lang-json">{
+    <span class="string">"closureLibrary"</span>: <span class="string">"closure-library/"</span>
+}</code></pre>
 <p>That&#39;s it! From here on you can require <a href="http://docs.closure-library.googlecode.com/git/index.html">any one of the hundreds of amazing modules</a> Google has to offer. All you need to do is require the module you need and it&#39;ll be available in the global namespace:</p>
-<pre><code>goog.provide(<span class="string">'app.util'</span>);
+<pre><code class="lang-js">goog.provide(<span class="string">'app.util'</span>); <span class="comment">// your app's utils module</span>
 
-goog.require(<span class="string">'goog.string'</span>);
+goog.require(<span class="string">'goog.string'</span>); <span class="comment">// the GC String module</span>
 
 app.util.contains = <span class="keyword">function</span>(string, test) {
   <span class="keyword">return</span> goog.string.contains(string, test);
