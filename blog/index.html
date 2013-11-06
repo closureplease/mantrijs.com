@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>The MantriJS Blog - Mantri: Javascript Dependency System</title><link rel="stylesheet" href="/css/main.css"><link href="http://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet" type="text/css"><link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"><!-- link(href='/rss', rel='alternate', title='Grunt Blog Feed', type='application/atom+xml')--><script src="/js/vendor/lib/modernizr.min.js"></script></head><body class="page-blog page-secondary"><div class="navbar navbar-inverse"><div class="navbar-inner"><div class="container"><a href="/" class="brand"><span class="logo">Mantri</span></a><div class="nav-collapse collapse"><ul class="nav"><li><a href="/getting-started/"><i class="icon-arrow-right"></i><span>Getting Started</span></a></li><li><a href="/api"><i class="icon-cog"></i><span>API</span></a></li></ul><form class="navbar-search pull-right"><input type="text" placeholder="Search" class="search-query"></form></div><!--.nav-collapse--></div></div></div><div class="content"><div class="container"><div class="row-fluid"><div class="span9 page"><div class="hero-unit"><h1 class="news-title">The MantriJS Blog</h1><h2><a href="/blog/mantri-v0.2.0-released">Mantri v0.2.0 released</a><span class="post-date">Posted on November 7, 2013</span></h2><p>The new release of Mantri brings a big build flow overhaul and a lot of new goodies. It all started by what at the time seemed like a simple task, enabling multiple Built-Modules... Three months and <a href="https://github.com/closureplease/mantri/pull/13">thousands of lines</a> later i am amped to announce the release of v0.2.0!</p>
+<p> Here&#39;s The big picture, what&#39;s new and changed:</p>
+<ul>
+<li>Can now <a href="http://mantrijs.com/api/building-multiple-modules/">build multiple modules into Build-Modules</a>.</li>
+<li>Mantri now <a href="http://mantrijs.com/api/sourcemaps-on-mantri/">supports Source Maps</a>.</li>
+<li>You can now include and use any Closure Library module, use the <code>closureLibrary</code> key.</li>
+<li>Renamed keys in the <code>mantriConf.json</code> file.</li>
+<li>Changed format of <code>outputWrapper</code>, now uses <a href="https://code.google.com/p/closure-compiler/wiki/FAQ#When_using_Advanced_Optimizations,_Closure_Compiler_adds_new_var">Closure&#39;s pattern</a>.</li>
+<li>Mantri Web component has been published on <a href="http://bower.io/">Bower</a> as <code>mantri</code>.</li>
+</ul>
+<h2><a class="anchor" href="#multiple-built-modules" name="multiple-built-modules">Multiple Built-Modules</a></h2>
+<p>The reason for starting works on 0.2.0 was the request to enable multiple module building. That&#39;s a well known technique, were you break up your code into isolated modules which get build separately. At load time, only your tiny core module is loaded, resulting in faster page loads. After page load, the core can lazy-load the isolated modules. The compiled (minified) result of those isolated modules, is what a <em>Built-Module</em> is.</p>
+<p>Breaking up your code into multiple Built-Modules is  an advanced and engaging process. You should consider if the ~300ms gain is worth the effort and resources required to maintain this workflow. If you are all in, jump into the <a href="http://mantrijs.com/api/building-multiple-modules/">Building Multiple Modules guide</a>.</p>
+<p>If you want to dig deeper into the principles upon which Mantri&#39;s multiple Built-Modules were implemented check out the <a href="http://thanpol.as/javascript/writing-modular-javascript-rewind/">&quot;Writing Modular Javascript REWIND&quot;</a> article, were Built-Modules are explained in depth along with Modular Application Patterns.</p>
+<h2><a class="anchor" href="#source-maps" name="source-maps">Source Maps</a></h2>
+<p>In v0.2.0 Mantri introduces <a href="https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k">Source Maps revision 3</a>. To properly implement this feature the Vendor Libraries had to be included in the, now single, compilation pass.</p>
+<p>Enabling Source Maps is as easy as defining the location to save the file using the <code>build.sourceMapFile</code> option in your <code>mantriConf.json</code>. Read more about working with <a href="http://mantrijs.com/api/sourcemaps-on-mantri/">Source Maps in this article</a>.</p>
+<h2><a class="anchor" href="#closure-library" name="closure-library">Closure Library</a></h2>
+<p>It&#39;s silly how Mantri wraps around Closure Tools but did not provide an option to require Modules from the Closure Library. Well, now you can do that in two easy steps:</p>
+<ol>
+<li><p>Fetch the Closure Library source:</p>
+<p> git clone <a href="https://code.google.com/p/closure-library/">https://code.google.com/p/closure-library/</a></p>
+</li>
+<li><p>Define the location of the closure library in your <code>mantriConf.json</code> file:
+ {</p>
+<pre><code> <span class="string">"closureLibrary"</span>: <span class="string">"closure-library/"</span></code></pre>
+<p> }</p>
+</li>
+</ol>
+<p>That&#39;s it! From here on you can require <a href="http://docs.closure-library.googlecode.com/git/index.html">any one of the hundreds of amazing modules</a> Google has to offer. All you need to do is require the module you need and it&#39;ll be available in the global namespace:</p>
+<pre><code>goog.provide(<span class="string">'app.util'</span>);
+
+goog.require(<span class="string">'goog.string'</span>);
+
+app.util.contains = <span class="keyword">function</span>(string, test) {
+  <span class="keyword">return</span> goog.string.contains(string, test);
+};</code></pre>
+<p>It is well worth your 5&#39; to check out the categories and specific topics the Closure Library Modules cover, there are many hidden gems in there.</p>
+<h2><a class="anchor" href="#breaking-changes" name="breaking-changes">Breaking Changes</a></h2>
+<p>The v0.2.x series brings some rather breaking changes when migrating from 0.1.x. For the majority of the use cases the transition will be smooth, as there are deprecation warnings but old config files will get parsed. Until the 0.3.x series that is.</p>
+<p>The only really breaking change is the <code>outputWrapper</code> option. Because of Mantri&#39;s build flow overhaul, this option is now handled by the GCC and no longer is parsed by Underscore&#39;s template.</p>
+<p>Read the <a href="http://mantrijs.com/api/migrating-from-0.1.x-to-0.2.x/">Migration guide if you are using 0.1.x</a>.</p>
+<h2><a class="anchor" href="#the-new-build-flow" name="the-new-build-flow">The New Build Flow</a></h2>
+<p>One of the most significant changes in the built flow is the way the Vendor Libraries are bundled. In the previous series, 0.1.x, Mantri concatenated all the 3rd party libs and passed them through Uglify. Now, in the 0.2.x series Vendor Libraries along with your application are compiled all together using the <a href="https://code.google.com/p/closure-compiler">Google Closure Compiler</a> (GCC).</p>
+<p>Here is a break down of how Mantri builds your application:</p>
+<ul>
+<li>Validates all the parameters of your <code>mantriConf.json</code> file, Grunt task directives or CLI options...</li>
+<li>Collects all the Vendor Libraries in an array, sequenced.</li>
+<li>Will run the <a href="https://developers.google.com/closure/library/docs/closurebuilder">Closure Builder tool</a> to resolve the dependency tree of your application and generate the list of files in the order they should be bundled.</li>
+<li>Will concatenate the Vendor Libs array to the Application&#39;s array and create the master array of files to compile.</li>
+<li>Configures and executes the Google Closure Compiler (GCC).<ul>
+<li>If multiple Built-Modules are defined, Mantri will loop through them and compile each one as per the directives.</li>
+</ul>
+</li>
+<li>If Source Maps are enabled, a directive will be appended to the build file to instruct the browser where to locate the sourceMap file.</li>
+<li>Generate some stats for you.</li>
+</ul>
+<p>There are more than meets the eye in the stats generated. One of the secret powers of the Google Closure Compiler (GCC) is that there is a gzip optimization layer among the multiple <em>passes</em>. That means GCC produced bundles have greater compression ratios when gziped!</p>
+<p>With this version of Mantri, the latest builds of GCC and Closure Builder have been packed. Tons of optimizations and tweaks by Google Engineers for free!</p>
+<h2><a class="anchor" href="#thank-you" name="thank-you">Thank you</a></h2>
+<p>Thank you all for your feedback and interest in Mantri! Please share your experience with Mantri and the how the new version works for you!</p>
+<p>Thank you!</p>
+</div></div><div class="span3"><div class="well sidebar-nav news"><ul class="nav nav-list"><li class="nav-header"><i class="icon-newspaper"></i><span>Blog</span></li><li><a href="/blog/2013-11-7-mantri-v0.2.0-released">Mantri v0.2.0 released</a></li></ul></div></div></div></div></div><footer class="master-footer"><div class="inner"><div class="container"><ul class="pull-right"><li class="social"><iframe src="http://ghbtns.com/github-btn.html?user=closureplease&amp;repo=mantri&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="94" height="20"></iframe><iframe url="http://mantrijs.com" text="zit" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fmantrijs.com&amp;text=Check%20out%20Mantri%2C%20Javascript%20Dependency%20System%20extraordinaire&amp;hashtags=mantrijs" style="width:130px; height:20px;"></iframe><!--a(href='https://github.com/closureplease/mantri', alt='Mantri on GitHub')--><!--span Mantri on GitHub &nbsp;--><!--span.icon-github--></li></ul><ul class="pull-left"><li>This site was built using the <a href="https://github.com/gruntjs/gruntjs.com/tree/site-0.4.0" alt="gruntjs.com repository">source, images and copy</a> of <a href="http://gruntjs.com" alt="grunt">gruntjs.com</a></li><li>The rest (c) 2013 <a href="http://thanpol.as" alt="Thanasis Polychronakis Website">Thanasis Polychronakis</a> Licensed under the <a href="https://github.com/closureplease/mantri/blob/master/LICENSE-MIT" alt="MIT LICENSE">MIT</a>.</li></ul></div></div></footer><script>var LIVE = !!window.location.origin.match(/mantrijs/);
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', (LIVE ? 'UA-16398858-9' : 'xxxx'), 'mantrijs.com');
+ga('send', 'pageview');</script></body></html>
